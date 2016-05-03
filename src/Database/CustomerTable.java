@@ -29,7 +29,6 @@ public class CustomerTable
             Connection conn = DBConnection.getConnection();
             stmt = conn.createStatement();
 
-            System.out.println("Der");
             sqlString = "CREATE TABLE IF NOT EXISTS Customer " +
                     "(customerId INT(3) NOT NULL, " +
                     "customerFirstName VARCHAR(30) , " +
@@ -40,7 +39,6 @@ public class CustomerTable
 
 
             stmt.executeUpdate(sqlString);
-            System.out.println("og her");
         }
         catch (Exception e)
         {

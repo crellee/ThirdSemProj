@@ -29,7 +29,6 @@ public class SalesTable
             Connection conn = DBConnection.getConnection();
             stmt = conn.createStatement();
 
-            System.out.println("Her virker det arh hvad");
             sqlString = "CREATE TABLE IF NOT EXISTS Sales " +
                     "(saleId INT(10) NOT NULL, " +
                     "productId INT(10) NOT NULL, " +
@@ -40,7 +39,6 @@ public class SalesTable
                     "PRIMARY KEY (saleId, productId, receiptId))";
 
             stmt.executeUpdate(sqlString);
-            System.out.println("arh hvad Der virker det også?");
         }
         catch (Exception e)
         {

@@ -28,7 +28,6 @@ public class ImercoCardTable
             Connection conn = DBConnection.getConnection();
             stmt = conn.createStatement();
 
-            System.out.println("Her virker det");
             sqlString = "CREATE TABLE IF NOT EXISTS ImercoCard " +
                     "(imercoCardId INT(10) NOT NULL, " +
                     "customerId INT(7), " +
@@ -37,7 +36,6 @@ public class ImercoCardTable
                     "PRIMARY KEY (imercoCardId))";
 
             stmt.executeUpdate(sqlString);
-            System.out.println("Der virker det også?");
         }
         catch (Exception e)
         {
