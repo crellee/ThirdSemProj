@@ -1,5 +1,8 @@
 package Model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Created by kristinOlof on 03-05-2016.
  */
@@ -7,6 +10,8 @@ public class Employee
 {
     private String name;
     private int id;
+
+    public static List<Employee> employeeList = new ArrayList<Employee>();
 
     public Employee()
     {}

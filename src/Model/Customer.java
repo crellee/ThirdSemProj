@@ -1,5 +1,8 @@
 package Model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Created by kristinOlof on 03-05-2016.
  */
@@ -9,6 +12,8 @@ public class Customer
     private String lastName;
     private int zipCode;
     private String email;
+
+    public static List<Customer> customerList = new ArrayList<Customer>();
 
     public Customer()
     {}
