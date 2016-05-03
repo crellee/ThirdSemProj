@@ -3,15 +3,15 @@ package Model;
 /**
  * Created by kristinOlof on 03-05-2016.
  */
-public class Emloeyy
+public class Employee
 {
     private String name;
     private int id;
 
-    public Emloeyy()
+    public Employee()
     {}
 
-    public Emloeyy(String name, int id)
+    public Employee(String name, int id)
     {
         this.name = name;
         this.id = id;
