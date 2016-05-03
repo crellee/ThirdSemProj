@@ -16,6 +16,7 @@ public class Main
 
         CustomerTable.getInstance().createTable();
         ImercoCardTable.getInstance().createTable();
+        SalesTable.getInstance().createTable();
 
         //hej
         //crellee = noob name
