@@ -7,17 +7,17 @@ import java.sql.Statement;
 /**
  * Created by roije on 03/05/2016.
  */
-public class ProductsTable
+public class ReceiptTable
 {
-    private static ProductsTable singleton = new ProductsTable( );
+    private static ReceiptTable singleton = new ReceiptTable( );
 
     /* A private Constructor prevents any other
      * class from instantiating.
      */
-    private ProductsTable(){ }
+    private ReceiptTable(){ }
 
     /* Static 'instance' method */
-    public static ProductsTable getInstance( ) {
+    public static ReceiptTable getInstance( ) {
         return singleton;
     }
 
@@ -31,12 +31,12 @@ public class ProductsTable
             Connection conn = DBConnection.getConnection();
             stmt = conn.createStatement();
 
-            sqlString = "CREATE TABLE IF NOT EXISTS Products " +
-                    "(productId INTEGER(10) NOT NULL, " +
-                    "productName VARCHAR(25), " +
-                    "productDescription VARCHAR(50), " +
-                    "price DOUBLE(10, 2), " +
-                    "discount TINYINT(10), " +
+            sqlString = "CREATE TABLE IF NOT EXISTS Receipts " +
+                    "(receiptId INTEGER(10) NOT NULL, " +
+                    "employeeId INTEGER(10) NOT NULL, " +
+                    "imercoCardId INTEGER(10) NOT NULL, " +
+                    "dateIssued VARCHAR (10), " +
+                    "paymentType VARCHAR (20), " +
                     "PRIMARY KEY (productId))";
 
             stmt.executeUpdate(sqlString);

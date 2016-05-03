@@ -8,6 +8,18 @@ import java.sql.Statement;
  */
 public class EmployeeTable
 {
+    private static EmployeeTable singleton = new EmployeeTable( );
+
+    /* A private Constructor prevents any other
+     * class from instantiating.
+     */
+    private EmployeeTable(){ }
+
+    /* Static 'instance' method */
+    public static EmployeeTable getInstance( ) {
+        return singleton;
+    }
+
     public void createTable()
     {
         String sqlString;
@@ -23,8 +35,6 @@ public class EmployeeTable
                     "(employeeId INT(3) NOT NULL, " +
                     "employeeName VARCHAR(20) NOT NULL, " +
                     "PRIMARY KEY (employeeId) )";
-
-
 
             stmt.executeUpdate(sqlString);
             System.out.println("Der");
