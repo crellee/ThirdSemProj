@@ -1,7 +1,7 @@
 package Main;
 
 import Database.DBCreator;
-import Database.ProductsTable;
+import Database.EmployeeTable;
 
 /**
  * Created by christianhasselstrom on 21/04/2016.
@@ -14,6 +14,9 @@ public class Main
         DBCreator.create();
         ProductsTable pr = new ProductsTable();
         pr.createTable();
+        EmployeeTable employeeTable = new EmployeeTable();
+        employeeTable.createTable();
+
         //hej
         //crellee = noob name
         //blabla
