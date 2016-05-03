@@ -13,7 +13,10 @@ public class EmployeeTable
     /* A private Constructor prevents any other
      * class from instantiating.
      */
-    private EmployeeTable(){ }
+    private EmployeeTable()
+    {
+
+    }
 
     /* Static 'instance' method */
     public static EmployeeTable getInstance( ) {

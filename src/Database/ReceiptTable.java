@@ -37,7 +37,9 @@ public class ReceiptTable
                     "imercoCardId INTEGER(10) NOT NULL, " +
                     "dateIssued VARCHAR (10), " +
                     "paymentType VARCHAR (20), " +
-                    "PRIMARY KEY (productId))";
+                    "FOREIGN KEY (employeeId) REFERENCES Employee(employeeId), " +
+                    "FOREIGN KEY (imercoCardId) REFERENCES ImercoCard(imercoCardId), " +
+                    "PRIMARY KEY (receiptId))";
 
             stmt.executeUpdate(sqlString);
 
