@@ -8,7 +8,20 @@ import java.sql.Statement;
  */
 public class CustomerTable
 {
-    public void createTable() {
+    private static CustomerTable singleton = new CustomerTable( );
+
+    /* A private Constructor prevents any other
+     * class from instantiating.
+     */
+    private CustomerTable(){ }
+
+    /* Static 'instance' method */
+    public static CustomerTable getInstance( ) {
+        return singleton;
+    }
+
+    public void createTable()
+    {
         String sqlString;
         Statement stmt;
 

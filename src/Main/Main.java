@@ -14,8 +14,7 @@ public class Main
         EmployeeTable.getInstance().createTable();
         ProductsTable.getInstance().createTable();
 
-        CustomerTable customerTable = new CustomerTable();
-        customerTable.createTable();
+        CustomerTable.getInstance().createTable();
         ImercoCardTable.getInstance().createTable();
 
         //hej
