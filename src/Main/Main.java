@@ -1,9 +1,6 @@
 package Main;
 
-import Database.CustomerTable;
-import Database.DBCreator;
-import Database.EmployeeTable;
-import Database.ProductsTable;
+import Database.*;
 
 /**
  * Created by christianhasselstrom on 21/04/2016.
@@ -19,6 +16,7 @@ public class Main
 
         CustomerTable customerTable = new CustomerTable();
         customerTable.createTable();
+        ImercoCardTable.getInstance().createTable();
 
         //hej
         //crellee = noob name
