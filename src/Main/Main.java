@@ -1,5 +1,6 @@
 package Main;
 
+import Database.CustomerTable;
 import Database.DBCreator;
 import Database.EmployeeTable;
 import Database.ProductsTable;
@@ -15,6 +16,9 @@ public class Main
         DBCreator.create();
         EmployeeTable.getInstance().createTable();
         ProductsTable.getInstance().createTable();
+
+        CustomerTable customerTable = new CustomerTable();
+        customerTable.createTable();
 
         //hej
         //crellee = noob name
