@@ -28,7 +28,7 @@ public class DummieInfo
             stmt = conn.createStatement();
 
             sqlString ="INSERT INTO customer (customerId, customerFirstName, customerLastName, email, zipCode)" +
-                    "VALUES( 15 ,'  Hanne ',' Frank ',' hanne@live.dk ', 2500 )," +
+                    "VALUES( 15 ,'Hanne','Frank','hanne@live.dk', 2500 )," +
                     "(11, 'Bo', 'Gremling', 'bobo@gmail.dk', 2200)," +
                     "(5, 'Jarla', 'Nilsen', 'jn@mail.dk', 3500);";
 
