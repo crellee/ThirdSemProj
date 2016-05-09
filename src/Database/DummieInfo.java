@@ -8,6 +8,16 @@ import java.sql.Statement;
  */
 public class DummieInfo
 {
+    private static DummieInfo singleton = new DummieInfo( );
+
+    public DummieInfo()
+    {
+    }
+
+    public static DummieInfo getInstance( ) {
+        return singleton;
+    }
+
     public void customerInfo()
     {
         String sqlString, sqlString1, sqlString2, sqlString3;

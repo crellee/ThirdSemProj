@@ -41,8 +41,7 @@ public class Main extends Application
         ReceiptTable.getInstance().createTable();
         SalesTable.getInstance().createTable();
 
-
-
+        DummieInfo.getInstance().customerInfo();
 
     }
 
