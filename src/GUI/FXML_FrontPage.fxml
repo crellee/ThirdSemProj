@@ -36,7 +36,7 @@
                   <Font name="System Bold" size="18.0" />
                </font>
             </Button>
-            <Button fx:id="exitBtn" mnemonicParsing="false" prefHeight="100.0" prefWidth="170.0" text="Exit">
+            <Button fx:id="exitBtn" mnemonicParsing="false" onAction="#shutDownProgram" prefHeight="100.0" prefWidth="170.0" text="Exit">
                <font>
                   <Font name="System Bold" size="18.0" />
                </font>

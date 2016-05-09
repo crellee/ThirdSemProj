@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.paint.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="250.0" prefWidth="900.0" spacing="15.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.GUI_Controller.LoginWindow_Controller">
+   <children>
+      <Label text="Employee number:">
+         <font>
+            <Font name="System Bold" size="26.0" />
+         </font>
+      </Label>
+      <TextField fx:id="empNumField" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#resetLabel" prefHeight="52.0" prefWidth="854.0">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </TextField>
+      <HBox alignment="TOP_RIGHT" prefHeight="45.0" prefWidth="857.0">
+         <children>
+            <Button fx:id="submitBtn" mnemonicParsing="false" onAction="#checkLogin" prefHeight="43.0" prefWidth="148.0" text="Submit">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Button>
+         </children>
+         <VBox.margin>
+            <Insets right="30.0" />
+         </VBox.margin>
+      </HBox>
+      <Label fx:id="errorLabel" text="Invalid employee number" textFill="RED">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+   </children>
+   <padding>
+      <Insets left="15.0" top="10.0" />
+   </padding>
+</VBox>
