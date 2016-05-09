@@ -1,0 +1,30 @@
+.backGround
+{
+    -fx-background-color: #ffffff;
+}
+.greenButton
+{
+    -fx-background-color: #00a10a;
+}
+.greenButton:hover
+{
+    -fx-background-color: #00b60b;
+}
+.orangeButton
+{
+    -fx-background-color: orange;
+}
+
+.orangeButton:hover
+{
+    -fx-background-color: #ffb732;
+}
+.redButton
+{
+    -fx-background-color: #ff1c15;
+}
+.redButton:hover
+{
+    -fx-background-color: rgba(255, 27, 21, 0.71);
+
+}
