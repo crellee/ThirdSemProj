@@ -1,5 +1,6 @@
 package Main;
 
+import Algorithm.PointCounter;
 import Database.*;
 
 /**
@@ -28,5 +29,7 @@ public class Main
         ReceiptTable.getInstance().createTable();
         SalesTable.getInstance().createTable();
 
+        PointCounter pointCounter = new PointCounter();
+        pointCounter.countPoints(59);
     }
 }

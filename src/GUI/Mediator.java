@@ -10,9 +10,9 @@ public class Mediator
 {
     private Scene frontPage, homePage;
     private Stage stage;
-    private Mediator instance;
+    private static Mediator instance;
 
-    public synchronized Mediator getInstance()
+    public static synchronized Mediator getInstance()
     {
         if(instance == null)
         {
