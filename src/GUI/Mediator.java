@@ -8,11 +8,11 @@ import javafx.stage.Stage;
  */
 public class Mediator
 {
-    private Scene frontPage, homePage;
+    private Scene frontPage, homePage, nextWindow;
     private Stage stage;
-    private Mediator instance;
+    private static Mediator instance;
 
-    public synchronized Mediator getInstance()
+    public static synchronized Mediator getInstance()
     {
         if(instance == null)
         {
@@ -31,6 +31,7 @@ public class Mediator
     public void setFrontPage(Scene newFrontPage)
     {
         this.frontPage = newFrontPage;
+        setStageConfig(frontPage, "Front Page");
     }
 
     //Setter for homePage
@@ -43,12 +44,12 @@ public class Mediator
     {
         stage.setScene(scene);
         stage.setTitle(heading);
-        stage.setResizable(false);
+        stage.setResizable(true);
         stage.setMaximized(true);
         stage.show();
     }
 
-    private void changeScene(String sceneName)
+    public void changeScene(String sceneName)
     {
         switch (sceneName)
         {
@@ -58,6 +59,8 @@ public class Mediator
             case "homePage":
                 setStageConfig(homePage, "Home Page");
                 break;
+            case "nextWindow":
+                setStageConfig(nextWindow, "gblbc");
         }
     }
 }

@@ -11,7 +11,6 @@ public class ImercoCard
     private int cardId;
     private int activePoints;
     public Customer customer;
-
     public static List<Receipt> receiptListList = new ArrayList<Receipt>();
     public static List<Point> pointList = new ArrayList<Point>();
 
