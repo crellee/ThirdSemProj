@@ -1,5 +1,6 @@
 package Main;
 
+import Algorithm.PointCounter;
 import Database.*;
 import Database.DBCreator;
 import Database.EmployeeTable;
@@ -53,5 +54,7 @@ public class Main extends Application
         mediator.setStage(primaryStage);
         FrontPage frontPage = new FrontPage();
         mediator.setFrontPage(frontPage.getFrontPageScene());
+        PointCounter pointCounter = new PointCounter();
+        pointCounter.countPoints(59);
     }
 }
