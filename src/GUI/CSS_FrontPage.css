@@ -1,0 +1,14 @@
+.backGround
+{
+    -fx-background-color: #ffffff;
+}
+
+.orangeButton
+{
+    -fx-background-color: orange;
+}
+
+.orangeButton:hover
+{
+    -fx-background-color: #ffb732;
+}

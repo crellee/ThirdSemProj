@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane fx:id="borderPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1024.0" styleClass="backGround" stylesheets="@CSS_FrontPage.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.GUI_Controller.FrontPage_Controller">
+   <right>
+      <VBox maxWidth="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="201.0" spacing="10.0" BorderPane.alignment="CENTER">
+         <children>
+            <Button fx:id="loginBtn" mnemonicParsing="false" onAction="#openLoginWindow" prefHeight="100.0" prefWidth="170.0" text="Logon">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Button>
+            <Button mnemonicParsing="false" prefHeight="100.0" prefWidth="170.0" styleClass="orangeButton" stylesheets="@CSS_FrontPage.css" text="BACKOFFICE">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Button>
+            <Button mnemonicParsing="false" prefHeight="100.0" prefWidth="170.0" styleClass="orangeButton" stylesheets="@CSS_FrontPage.css" text="INTRANET">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Button>
+            <Button mnemonicParsing="false" prefHeight="100.0" prefWidth="170.0" styleClass="orangeButton" stylesheets="@CSS_FrontPage.css" text="VARE SØGNING">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Button>
+            <Button mnemonicParsing="false" prefHeight="100.0" prefWidth="170.0" text="PRISTJEK">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Button>
+            <Button fx:id="exitBtn" mnemonicParsing="false" prefHeight="100.0" prefWidth="170.0" text="Exit">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Button>
+         </children>
+         <padding>
+            <Insets left="17.0" top="10.0" />
+         </padding>
+      </VBox>
+   </right>
+   <center>
+      <HBox prefHeight="400.0" prefWidth="483.0" BorderPane.alignment="CENTER">
+         <children>
+            <ImageView fitHeight="482.0" fitWidth="822.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Pictures/imerco.jpg" />
+               </image>
+            </ImageView>
+         </children>
+         <padding>
+            <Insets left="10.0" top="10.0" />
+         </padding>
+      </HBox>
+   </center>
+</BorderPane>
