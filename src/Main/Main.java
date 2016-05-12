@@ -5,11 +5,15 @@ import Database.DBCreator;
 import Database.EmployeeTable;
 import Database.ProductsTable;
 import Database.ReceiptTable;
+import GUI.GUI_Controller.Main_Controller;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.JavaFXBuilderFactory;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+
+import java.net.URL;
 
 /**
  * Created by christianhasselstrom on 21/04/2016.
@@ -48,10 +52,16 @@ public class Main extends Application
     @Override
     public void start(Stage primaryStage) throws Exception
     {
-        Parent root = FXMLLoader.load(getClass().getResource("/GUI/FXML_HomePage.fxml"));
+        URL location = getClass().getResource("/GUI/FXML_FrontPage.fxml");
+        FXMLLoader fxmlLoader = new FXMLLoader();
+        fxmlLoader.setLocation(location);
+        fxmlLoader.setBuilderFactory(new JavaFXBuilderFactory());
+        Parent root = (Parent) fxmlLoader.load(location.openStream());
         Scene scene = new Scene(root);
         primaryStage.setScene(scene);
-        primaryStage.show();
+        Main_Controller mainController = Main_Controller.getInstance();
+        mainController.setStage(primaryStage);
+        mainController.showStage();
         /*
         Mediator mediator = Mediator.getInstance();
         mediator.setStage(primaryStage);

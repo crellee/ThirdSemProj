@@ -7,7 +7,7 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="250.0" prefWidth="900.0" spacing="15.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.GUI_Controller.LoginWindow_Controller">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="250.0" prefWidth="900.0" spacing="15.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.GUI_Controller.FrontPage_Controller">
    <children>
       <Label text="Employee number:">
          <font>
@@ -31,7 +31,7 @@
             <Insets right="30.0" />
          </VBox.margin>
       </HBox>
-      <Label fx:id="errorLabel" text="Invalid employee number" textFill="RED">
+      <Label fx:id="errorLabel" text="" textFill="RED">
          <font>
             <Font size="14.0" />
          </font>
