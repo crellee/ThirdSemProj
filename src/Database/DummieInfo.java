@@ -23,7 +23,6 @@ public class DummieInfo
         String sqlString, sqlString1, sqlString2, sqlString3;
         Statement stmt, stmt1, stmt2, stmt3;
 
-
         try {
             Connection conn = DBConnection.getConnection();
             stmt = conn.createStatement();
@@ -48,12 +47,11 @@ public class DummieInfo
 
             stmt2.executeUpdate(sqlString2);
 
-
             stmt3 = conn.createStatement();
-            sqlString3 = "INSERT INTO products(productId, productName, productDescription, price, discount)"+
-                    "VALUES(15, 'Vase', 'Vase med guldflager', 3999.00, NULL) , " +
-                    "(1545, 'Teppe', 'Cotton fluffy', 299.00, NULL) , " +
-                    "(4578, 'Beslag', 'Messingbeslag rustfrit', 159.00, NULL);";
+            sqlString3 = "INSERT INTO imerco_project.products(productId, productName, productDescription, price, discount)"+
+                    "VALUES(15, 'Vase', 'Vase med guldflager', 3999, NULL), " +
+                    "(1545, 'Teppe', 'Cotton fluffy', 299, NULL)," +
+                    "(4578, 'Beslag', 'Messingbeslag rustfrit', 159, NULL);";
 
             stmt3.executeUpdate(sqlString3);
         }
