@@ -13,6 +13,7 @@ public class Product
     private String description;
     private double price;
     private double discount;
+    private int amount;
 
     //?Instanciate via database?
     public static List<Product> productArrayList = new ArrayList<>();
@@ -29,6 +30,7 @@ public class Product
         this.description = description;
         this.price = price;
         this.discount = discount;
+        this.amount = amount;
     }
 
 
@@ -80,5 +82,13 @@ public class Product
     public void setDiscount(double discount)
     {
         this.discount = discount;
+    }
+
+    public int getAmount() {
+        return amount;
+    }
+
+    public void setAmount(int amount) {
+        this.amount = amount;
     }
 }
