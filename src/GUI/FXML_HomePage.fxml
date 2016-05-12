@@ -6,16 +6,16 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.GUI_Controller.HomePage_Controller">
    <center>
-      <VBox prefHeight="768.0" prefWidth="750.0" spacing="4.0" BorderPane.alignment="CENTER">
+      <VBox id="textField" prefHeight="768.0" prefWidth="750.0" spacing="4.0" BorderPane.alignment="CENTER">
          <children>
             <Label prefHeight="31.0" prefWidth="292.0" text="Enter prodcuct number:">
                <font>
                   <Font name="System Bold Italic" size="17.0" />
                </font>
             </Label>
-            <TextField fx:id="textField" />
+            <TextField fx:id="textField1" />
             <TableView id="saleTable" prefHeight="668.0" prefWidth="718.0">
               <columns>
                 <TableColumn prefWidth="95.0" text="Product ID" />
@@ -36,7 +36,7 @@
          <children>
             <HBox prefHeight="90.0" prefWidth="286.0" spacing="5.0">
                <children>
-                  <Button mnemonicParsing="false" prefHeight="70.0" prefWidth="120.0" styleClass="greenButton" stylesheets="@CSS_HomePage.css" text="Start Sale">
+                  <Button mnemonicParsing="false" onAction="#addToTable" prefHeight="70.0" prefWidth="120.0" styleClass="greenButton" stylesheets="@CSS_HomePage.css" text="Start Sale">
                      <padding>
                         <Insets right="10.0" />
                      </padding>
