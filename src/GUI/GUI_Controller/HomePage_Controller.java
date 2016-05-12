@@ -12,6 +12,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 
 import java.net.URL;
+import java.sql.ResultSet;
 import java.util.ResourceBundle;
 
 /**
@@ -25,15 +26,19 @@ public class HomePage_Controller implements Initializable
     @FXML
     private TextField textField1;
     @FXML
-    static TableColumn prodId;
+     TableColumn prodId;
     @FXML
-    static TableColumn desc;
+     TableColumn desc;
     @FXML
-    static TableColumn price;
+     TableColumn price;
     @FXML
-    static TableColumn disc;
+     TableColumn disc;
     @FXML
-    static TableColumn amount;
+     TableColumn amount;
+    @FXML
+     TableView mainTable;
+
+
 
     @Override
     public void initialize(URL location, ResourceBundle resources)
@@ -41,14 +46,15 @@ public class HomePage_Controller implements Initializable
 
     }
 
-    public void addToTable()
+    /*public void addToTable()
     {
 
         System.out.println(textField1.getText().toString());
         ProductVerifier.verifyProduct(textField1);
 
     }
-    public static void addToTable2()
+    */
+    public void addToTable()
     {
 
         prodId.setCellValueFactory(new PropertyValueFactory<Model.Product, Integer>("productId"));
@@ -59,6 +65,25 @@ public class HomePage_Controller implements Initializable
 
         ObservableList<Product> data = FXCollections.observableArrayList();
 
+        try
+        {
+            ResultSet rs = ProductVerifier.tableShow(textField1);
+            while(rs.next())
+            {
+                Model.Product product = new Model.Product();
 
+                product.setProductId(rs.getInt("productId"));
+                product.setDescription(rs.getString("productDescription"));
+                product.setPrice(rs.getInt("price"));
+                product.setDiscount(rs.getInt("discount"));
+            }
+            mainTable.setItems(data);
+        }
+        catch(Exception e)
+        {
+
+        }
+
+//    return mainTable;
     }
 }

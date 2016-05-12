@@ -12,6 +12,7 @@ import java.sql.Statement;
  */
 public class ProductVerifier
 {
+    /*
     public static void verifyProduct(TextField str)
     {
         String productStr = str.getText().toString();
@@ -38,6 +39,7 @@ public class ProductVerifier
 
         }
     }
+    */
     public static ResultSet tableShow(TextField str)
     {
         String productStr = str.getText().toString();
@@ -45,7 +47,7 @@ public class ProductVerifier
         try
         {
             Connection conn = DBConnection.getConnection();
-            String sqlString = "SELECT * FROM Products WHERE productId = '"+productStr+"' ";
+            String sqlString = "SELECT productId , productDescription , price , discount FROM Products WHERE productId = '"+productStr+"' ";
             rs = conn.createStatement().executeQuery(sqlString);
         }
         catch (Exception e)
