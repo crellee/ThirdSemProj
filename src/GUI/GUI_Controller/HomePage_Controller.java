@@ -23,6 +23,7 @@ public class HomePage_Controller implements Initializable
 
 
 
+    static int in = 0;
     @FXML
     private TextField textField1;
     @FXML
@@ -61,8 +62,8 @@ public class HomePage_Controller implements Initializable
         desc.setCellValueFactory(new PropertyValueFactory<Model.Product, String>("description"));
         price.setCellValueFactory(new PropertyValueFactory<Model.Product, Double>("price"));
         disc.setCellValueFactory(new PropertyValueFactory<Model.Product, Integer>("discount"));
-        amount.setCellValueFactory(new PropertyValueFactory<Object, Integer>("1"));
-        //amount.setCellValueFactory(new PropertyValueFactory<Model.Product, Integer>("amount"));
+        //amount.setCellValueFactory(new PropertyValueFactory<Object, Integer>("1"));
+        amount.setCellValueFactory(new PropertyValueFactory<Model.Product, Integer>("amount"));
 
 
         ObservableList<Model.Product> data = FXCollections.observableArrayList();
@@ -78,22 +79,9 @@ public class HomePage_Controller implements Initializable
                 product.setDescription(rs.getString("productDescription"));
                 product.setPrice(rs.getInt("price"));
                 product.setDiscount(rs.getInt("discount"));
-
+                product.setAmount(1);
 
                 data.add(product);
-
-               // if(data2.contains(product))
-                //{
-                //}
-
-                //if(data.get(product.getProductId()) == data2.get(product.getProductId()))
-                //{
-                    /*
-                    hmm
-                     */
-
-                //}
-
             }
 
             data2.addAll(data);
@@ -104,8 +92,6 @@ public class HomePage_Controller implements Initializable
         {
 
         }
-
-//    return mainTable;
     }
     public void addToTable2()
     {
