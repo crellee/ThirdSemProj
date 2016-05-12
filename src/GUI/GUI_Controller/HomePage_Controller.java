@@ -36,7 +36,9 @@ public class HomePage_Controller implements Initializable
     @FXML
      TableColumn amount;
     @FXML
-     TableView mainTable;
+     TableView<Model.Product> mainTable;
+
+    ObservableList<Model.Product> data2 = FXCollections.observableArrayList();
 
 
 
@@ -48,22 +50,22 @@ public class HomePage_Controller implements Initializable
 
     /*public void addToTable()
     {
-
         System.out.println(textField1.getText().toString());
         ProductVerifier.verifyProduct(textField1);
-
     }
     */
     public void addToTable()
     {
 
         prodId.setCellValueFactory(new PropertyValueFactory<Model.Product, Integer>("productId"));
-        desc.setCellValueFactory(new PropertyValueFactory<Model.Product, String>("productDescription"));
+        desc.setCellValueFactory(new PropertyValueFactory<Model.Product, String>("description"));
         price.setCellValueFactory(new PropertyValueFactory<Model.Product, Double>("price"));
         disc.setCellValueFactory(new PropertyValueFactory<Model.Product, Integer>("discount"));
-        amount.setCellValueFactory(new PropertyValueFactory<Model.Product, Integer>("amount"));
+        amount.setCellValueFactory(new PropertyValueFactory<Object, Integer>("1"));
+        //amount.setCellValueFactory(new PropertyValueFactory<Model.Product, Integer>("amount"));
 
-        ObservableList<Product> data = FXCollections.observableArrayList();
+
+        ObservableList<Model.Product> data = FXCollections.observableArrayList();
 
         try
         {
@@ -76,8 +78,27 @@ public class HomePage_Controller implements Initializable
                 product.setDescription(rs.getString("productDescription"));
                 product.setPrice(rs.getInt("price"));
                 product.setDiscount(rs.getInt("discount"));
+
+
+                data.add(product);
+
+               // if(data2.contains(product))
+                //{
+                //}
+
+                //if(data.get(product.getProductId()) == data2.get(product.getProductId()))
+                //{
+                    /*
+                    hmm
+                     */
+
+                //}
+
             }
-            mainTable.setItems(data);
+
+            data2.addAll(data);
+            mainTable.setItems(data2);
+
         }
         catch(Exception e)
         {
@@ -85,5 +106,9 @@ public class HomePage_Controller implements Initializable
         }
 
 //    return mainTable;
+    }
+    public void addToTable2()
+    {
+
     }
 }
