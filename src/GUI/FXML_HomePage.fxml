@@ -18,11 +18,11 @@
             <TextField fx:id="textField1" />
             <TableView id="saleTable" prefHeight="668.0" prefWidth="718.0">
               <columns>
-                <TableColumn prefWidth="95.0" text="Product ID" />
-                <TableColumn prefWidth="119.0" text="Description" />
-                  <TableColumn prefWidth="95.0" text="Price" />
-                  <TableColumn prefWidth="95.0" text="Discount" />
-                  <TableColumn prefWidth="95.0" text="Amount" />
+                <TableColumn fx:id="prodId" prefWidth="95.0" text="Product ID" />
+                <TableColumn fx:id="desc" prefWidth="119.0" text="Description" />
+                  <TableColumn fx:id="price" prefWidth="95.0" text="Price" />
+                  <TableColumn fx:id="disc" prefWidth="95.0" text="Discount" />
+                  <TableColumn fx:id="amount" prefWidth="95.0" text="Amount" />
               </columns>
             </TableView>
          </children>
