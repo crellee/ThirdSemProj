@@ -84,6 +84,16 @@ public class HomePage_Controller implements Initializable
                 data.add(product);
             }
 
+
+            for(int i = 0; i < data2.size(); i++)
+            {
+                if(data2.get(i).getProductId() == data.get(0).getProductId())
+                {
+                    int j = data.get(0).getAmount() + 1;
+                    data.get(0).setAmount(j);
+                    data2.remove(i);
+                }
+            }
             data2.addAll(data);
             mainTable.setItems(data2);
 
