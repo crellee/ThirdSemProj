@@ -144,7 +144,7 @@
                <children>
                   <Button mnemonicParsing="false" prefHeight="27.0" prefWidth="86.0" styleClass="yellowButton" stylesheets="@CSS_HomePage.css" text="Slet Linje" />
                   <Label prefHeight="27.0" prefWidth="57.0" text="I Alt:" />
-                  <Label prefHeight="27.0" prefWidth="57.0" text="0,00" />
+                  <Label fx:id="totalAmountLbl" prefHeight="27.0" prefWidth="57.0" text="0,00" />
                </children>
             </HBox>
             <HBox prefHeight="36.0" prefWidth="286.0" spacing="30.0">
