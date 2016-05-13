@@ -26,6 +26,20 @@ public class HomePage_Controller implements Initializable
 
     @FXML
     private Label totalAmountLbl;
+    private double totalAmountDoub;
+
+    @FXML
+    private Label paidAmountLbl;
+    private double paidAmountDoub;
+
+    @FXML
+    private Label toOweLbl;
+    private double toOweDoub;
+
+    @FXML
+    private Label discountLbl;
+    private int discountInt;
+
     @FXML
     private TextField textField1;
     @FXML
@@ -38,11 +52,8 @@ public class HomePage_Controller implements Initializable
      TableColumn disc;
     @FXML
      TableColumn amount;
-    @FXML
-     TableView<Model.Product> mainTable;
-    double totalAmountDoub;
-    double tempAmount;
 
+    TableView<Model.Product> mainTable;
 
     ObservableList<Model.Product> data2 = FXCollections.observableArrayList();
 
@@ -108,6 +119,9 @@ public class HomePage_Controller implements Initializable
 
         }
         totalAmount();
+        paidAmount();
+        toOwe();
+        discount();
     }
 
     public void totalAmount()
@@ -118,9 +132,29 @@ public class HomePage_Controller implements Initializable
             totalAmountDoub += data2.get(i).getPrice() * data2.get(i).getAmount();
         }
 
-        //totalAmountDoub = totalAmountDoub + tempAmount;
         String doubleToString = Double.toString(totalAmountDoub);
         totalAmountLbl.setText(doubleToString);
+    }
 
+    public void paidAmount()
+    {
+        paidAmountDoub = 0;
+        String doubleToString = Double.toString(paidAmountDoub);
+        paidAmountLbl.setText(doubleToString);
+    }
+
+    public void toOwe()
+    {
+        toOweDoub = 0;
+        toOweDoub = totalAmountDoub - paidAmountDoub;
+        String doubleToString = Double.toString(toOweDoub);
+        toOweLbl.setText(doubleToString);
+    }
+
+    public void discount()
+    {
+        discountInt = 0;
+        String intToString = Integer.toString(discountInt);
+        discountLbl.setText(intToString);
     }
 }
