@@ -57,7 +57,6 @@ public class HomePage_Controller implements Initializable
     */
     public void addToTable()
     {
-
         prodId.setCellValueFactory(new PropertyValueFactory<Model.Product, Integer>("productId"));
         desc.setCellValueFactory(new PropertyValueFactory<Model.Product, String>("description"));
         price.setCellValueFactory(new PropertyValueFactory<Model.Product, Double>("price"));
@@ -85,6 +84,8 @@ public class HomePage_Controller implements Initializable
             }
 
 
+            /*følgende loop med indestående if sætning tjekker hvis et produkt der bliver tilføjet allerede
+            eksisterer i tabellen. Hvis dette er sandt inkrementeres amount, så varerene ikke bliver tilføjet dobbelt*/
             for(int i = 0; i < data2.size(); i++)
             {
                 if(data2.get(i).getProductId() == data.get(0).getProductId())
@@ -102,9 +103,5 @@ public class HomePage_Controller implements Initializable
         {
 
         }
-    }
-    public void addToTable2()
-    {
-
     }
 }
