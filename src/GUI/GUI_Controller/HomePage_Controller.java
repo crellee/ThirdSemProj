@@ -89,7 +89,7 @@ public class HomePage_Controller implements Initializable
             {
                 if(data2.get(i).getProductId() == data.get(0).getProductId())
                 {
-                    int j = data.get(0).getAmount() + 1;
+                    int j = data2.get(i).getAmount() + 1;
                     data.get(0).setAmount(j);
                     data2.remove(i);
                 }
