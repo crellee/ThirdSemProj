@@ -52,12 +52,6 @@ public class FrontPage_Controller implements Initializable
         stage.show();
     }
 
-    @FXML
-    public void resetLabel()
-    {
-        errorLabel.setVisible(false);
-    }
-
     private void changeToHomePage()
     {
         Main_Controller main_controller = Main_Controller.getInstance();
@@ -86,13 +80,18 @@ public class FrontPage_Controller implements Initializable
             Stage loginStage = (Stage) submitBtn.getScene().getWindow();
             loginStage.close();
             changeToHomePage();
-
         }
         else
         {
             errorLabel.setText("Invalid employee number");
             errorLabel.setVisible(true);
         }
+    }
+
+    @FXML
+    public void resetLabel()
+    {
+        errorLabel.setVisible(false);
     }
 
     public void shutDownProgram()

@@ -13,7 +13,6 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
-import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -60,9 +59,10 @@ public class HomePage_Controller implements Initializable
     @FXML
     TableView<Model.Product> mainTable;
 
-    ObservableList<Model.Product> data2 = FXCollections.observableArrayList();
-
-    private FirstProductTest firstProductTest = FirstProductTest.getInstance();
+    //Instance of FirstProduct class.
+    //This is necessary for getting the first product in the textfield from this controller (HomePage_Controller)
+    //into SalePage_Controller, where we will use it, to set into the TableView.
+    private FirstProduct firstProduct = FirstProduct.getInstance();
 
 
     @Override
@@ -74,7 +74,7 @@ public class HomePage_Controller implements Initializable
     public void toSalePage()
     {
         Product product = getFirstProductFromDB();
-        firstProductTest.setFirstProduct(product);
+        firstProduct.setFirstProduct(product);
 
         Main_Controller main_controller = Main_Controller.getInstance();
         Parent root = null;
@@ -93,7 +93,7 @@ public class HomePage_Controller implements Initializable
 
     }
 
-    public Product getFirstProductFromDB()
+    private Product getFirstProductFromDB()
     {
         try
         {
