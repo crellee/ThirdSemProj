@@ -159,4 +159,9 @@ public class HomePage_Controller implements Initializable
         String intToString = Integer.toString(discountInt);
         discountLbl.setText(intToString);
     }
+
+    public void endSale()
+    {
+
+    }
 }
