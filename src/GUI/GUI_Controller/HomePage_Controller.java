@@ -1,7 +1,6 @@
 package GUI.GUI_Controller;
 
 import Database.ProductVerifier;
-import Model.Product;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -52,10 +51,10 @@ public class HomePage_Controller implements Initializable
      TableColumn disc;
     @FXML
      TableColumn amount;
-
+    @FXML
     TableView<Model.Product> mainTable;
 
-    ObservableList<Model.Product> data2 = FXCollections.observableArrayList();
+    ObservableList<Model.Product> allProducts = FXCollections.observableArrayList();
 
 
 
@@ -102,17 +101,17 @@ public class HomePage_Controller implements Initializable
 
             /*følgende loop med indestående if sætning tjekker hvis et produkt der bliver tilføjet allerede
             eksisterer i tabellen. Hvis dette er sandt inkrementeres amount, så varerene ikke bliver tilføjet dobbelt*/
-            for(int i = 0; i < data2.size(); i++)
+            for(int i = 0; i < allProducts.size(); i++)
             {
-                if(data2.get(i).getProductId() == data.get(0).getProductId())
+                if(allProducts.get(i).getProductId() == data.get(0).getProductId())
                 {
-                    int j = data2.get(i).getAmount() + 1;
+                    int j = allProducts.get(i).getAmount() + 1;
                     data.get(0).setAmount(j);
-                    data2.remove(i);
+                    allProducts.remove(i);
                 }
             }
-            data2.addAll(data);
-            mainTable.setItems(data2);
+            allProducts.addAll(data);
+            mainTable.setItems(allProducts);
         }
         catch(Exception e)
         {
@@ -127,9 +126,9 @@ public class HomePage_Controller implements Initializable
     public void totalAmount()
     {
         totalAmountDoub = 0;
-        for (int i = 0; i < data2.size(); i++)
+        for (int i = 0; i < allProducts.size(); i++)
         {
-            totalAmountDoub += data2.get(i).getPrice() * data2.get(i).getAmount();
+            totalAmountDoub += allProducts.get(i).getPrice() * allProducts.get(i).getAmount();
         }
 
         String doubleToString = Double.toString(totalAmountDoub);
