@@ -1,11 +1,11 @@
 package GUI.GUI_Controller;
 
 import Database.ProductVerifier;
-import Model.Product;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
@@ -23,7 +23,22 @@ public class HomePage_Controller implements Initializable
 
 
 
-    static int in = 0;
+    @FXML
+    private Label totalAmountLbl;
+    private double totalAmountDoub;
+
+    @FXML
+    private Label paidAmountLbl;
+    private double paidAmountDoub;
+
+    @FXML
+    private Label toOweLbl;
+    private double toOweDoub;
+
+    @FXML
+    private Label discountLbl;
+    private int discountInt;
+
     @FXML
     private TextField textField1;
     @FXML
@@ -37,9 +52,9 @@ public class HomePage_Controller implements Initializable
     @FXML
      TableColumn amount;
     @FXML
-     TableView<Model.Product> mainTable;
+    TableView<Model.Product> mainTable;
 
-    ObservableList<Model.Product> data2 = FXCollections.observableArrayList();
+    ObservableList<Model.Product> allProducts = FXCollections.observableArrayList();
 
 
 
@@ -57,7 +72,6 @@ public class HomePage_Controller implements Initializable
     */
     public void addToTable()
     {
-
         prodId.setCellValueFactory(new PropertyValueFactory<Model.Product, Integer>("productId"));
         desc.setCellValueFactory(new PropertyValueFactory<Model.Product, String>("description"));
         price.setCellValueFactory(new PropertyValueFactory<Model.Product, Double>("price"));
@@ -85,26 +99,61 @@ public class HomePage_Controller implements Initializable
             }
 
 
-            for(int i = 0; i < data2.size(); i++)
+            /*følgende loop med indestående if sætning tjekker hvis et produkt der bliver tilføjet allerede
+            eksisterer i tabellen. Hvis dette er sandt inkrementeres amount, så varerene ikke bliver tilføjet dobbelt*/
+            for(int i = 0; i < allProducts.size(); i++)
             {
-                if(data2.get(i).getProductId() == data.get(0).getProductId())
+                if(allProducts.get(i).getProductId() == data.get(0).getProductId())
                 {
-                    int j = data2.get(i).getAmount() + 1;
+                    int j = allProducts.get(i).getAmount() + 1;
                     data.get(0).setAmount(j);
-                    data2.remove(i);
+                    allProducts.remove(i);
                 }
             }
-            data2.addAll(data);
-            mainTable.setItems(data2);
-
+            allProducts.addAll(data);
+            mainTable.setItems(allProducts);
         }
         catch(Exception e)
         {
 
         }
+        totalAmount();
+        paidAmount();
+        toOwe();
+        discount();
     }
-    public void addToTable2()
-    {
 
+    public void totalAmount()
+    {
+        totalAmountDoub = 0;
+        for (int i = 0; i < allProducts.size(); i++)
+        {
+            totalAmountDoub += allProducts.get(i).getPrice() * allProducts.get(i).getAmount();
+        }
+
+        String doubleToString = Double.toString(totalAmountDoub);
+        totalAmountLbl.setText(doubleToString);
+    }
+
+    public void paidAmount()
+    {
+        paidAmountDoub = 0;
+        String doubleToString = Double.toString(paidAmountDoub);
+        paidAmountLbl.setText(doubleToString);
+    }
+
+    public void toOwe()
+    {
+        toOweDoub = 0;
+        toOweDoub = totalAmountDoub - paidAmountDoub;
+        String doubleToString = Double.toString(toOweDoub);
+        toOweLbl.setText(doubleToString);
+    }
+
+    public void discount()
+    {
+        discountInt = 0;
+        String intToString = Integer.toString(discountInt);
+        discountLbl.setText(intToString);
     }
 }

@@ -144,14 +144,14 @@
                <children>
                   <Button mnemonicParsing="false" prefHeight="27.0" prefWidth="86.0" styleClass="yellowButton" stylesheets="@CSS_HomePage.css" text="Slet Linje" />
                   <Label prefHeight="27.0" prefWidth="57.0" text="I Alt:" />
-                  <Label prefHeight="27.0" prefWidth="57.0" text="0,00" />
+                  <Label fx:id="totalAmountLbl" prefHeight="27.0" prefWidth="57.0" text="0,00" />
                </children>
             </HBox>
             <HBox prefHeight="36.0" prefWidth="286.0" spacing="30.0">
                <children>
                   <Button mnemonicParsing="false" prefHeight="27.0" prefWidth="86.0" styleClass="redButton" stylesheets="@CSS_HomePage.css" text="Slet Alt" />
                   <Label prefHeight="27.0" prefWidth="57.0" text="Betalt:" />
-                  <Label prefHeight="27.0" prefWidth="57.0" text="0,00" />
+                  <Label fx:id="paidAmountLbl" prefHeight="27.0" prefWidth="57.0" text="0,00" />
                </children>
                <padding>
                   <Insets left="20.0" />
@@ -161,7 +161,7 @@
                <children>
                   <Button mnemonicParsing="false" prefHeight="27.0" prefWidth="86.0" styleClass="greenButton" stylesheets="@CSS_HomePage.css" text="Parker Bon" />
                   <Label prefHeight="27.0" prefWidth="57.0" text="Skyldig:" />
-                  <Label prefHeight="27.0" prefWidth="57.0" text="0,00" />
+                  <Label fx:id="toOweLbl" prefHeight="27.0" prefWidth="57.0" text="0,00" />
                </children>
                <padding>
                   <Insets left="20.0" />
@@ -171,7 +171,7 @@
                <children>
                   <Label prefHeight="27.0" prefWidth="86.0" />
                   <Label prefHeight="27.0" prefWidth="57.0" text="Rabat:" />
-                  <Label prefHeight="27.0" prefWidth="57.0" text="0,00" />
+                  <Label fx:id="discountLbl" prefHeight="27.0" prefWidth="57.0" text="0,00" />
                </children>
                <padding>
                   <Insets left="20.0" />
