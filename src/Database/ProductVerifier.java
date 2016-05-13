@@ -47,7 +47,8 @@ public class ProductVerifier
         try
         {
             Connection conn = DBConnection.getConnection();
-            String sqlString = "SELECT productId , productDescription , price , discount FROM Products WHERE productId = '"+productStr+"' ";
+            String sqlString = "SELECT productId , productDescription , price , discount " +
+                    "FROM Products WHERE productId = '"+productStr+"' ";
             rs = conn.createStatement().executeQuery(sqlString);
         }
         catch (Exception e)

@@ -1,30 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.text.*?>
+<?import java.lang.*?>
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
-<?import java.lang.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="778.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.GUI_Controller.HomePage_Controller">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.GUI_Controller.SalePage_Controller">
    <center>
       <VBox id="textField" prefHeight="768.0" prefWidth="750.0" spacing="4.0" BorderPane.alignment="CENTER">
          <children>
-            <Label prefHeight="31.0" prefWidth="292.0" text="Enter prodcuct number:">
+            <Label prefHeight="31.0" prefWidth="292.0" text="Enter product number:">
                <font>
                   <Font name="System Bold Italic" size="17.0" />
                </font>
             </Label>
             <TextField fx:id="textField1" />
             <TableView id="saleTable" fx:id="mainTable" prefHeight="668.0" prefWidth="718.0">
-              <columns>
-                <TableColumn fx:id="prodId" prefWidth="95.0" text="Product ID" />
-                  <TableColumn fx:id="prodName" prefWidth="109.0" text="ProductName" />
-                <TableColumn fx:id="desc" prefWidth="105.0" text="Description" />
+               <columns>
+                  <TableColumn fx:id="prodId" prefWidth="95.0" text="Product ID" />
+                  <TableColumn fx:id="desc" prefWidth="119.0" text="Description" />
                   <TableColumn fx:id="price" prefWidth="95.0" text="Price" />
                   <TableColumn fx:id="disc" prefWidth="95.0" text="Discount" />
                   <TableColumn fx:id="amount" prefWidth="95.0" text="Amount" />
-              </columns>
+               </columns>
             </TableView>
          </children>
          <padding>
@@ -37,29 +36,12 @@
          <children>
             <HBox prefHeight="90.0" prefWidth="286.0" spacing="5.0">
                <children>
-                  <Button mnemonicParsing="false" onAction="#toSalePage" prefHeight="70.0" prefWidth="120.0" styleClass="greenButton" stylesheets="@CSS_HomePage.css" text="Start Sale">
+                  <Button mnemonicParsing="false" onAction="#getProductFromDB" prefHeight="70.0" prefWidth="120.0" styleClass="orangeButton" stylesheets="@CSS_HomePage.css" text="Antal">
                      <padding>
                         <Insets right="10.0" />
                      </padding>
                   </Button>
-                  <Button mnemonicParsing="false" prefHeight="70.0" prefWidth="120.0" styleClass="orangeButton" stylesheets="@CSS_HomePage.css" text="Returner Vare">
-                     <padding>
-                        <Insets right="10.0" />
-                     </padding>
-                  </Button>
-               </children>
-               <padding>
-                  <Insets left="20.0" top="5.0" />
-               </padding>
-            </HBox>
-            <HBox prefHeight="90.0" prefWidth="286.0" spacing="5.0">
-               <children>
-                  <Button mnemonicParsing="false" prefHeight="70.0" prefWidth="120.0" styleClass="orangeButton" stylesheets="@CSS_HomePage.css" text="Parkerede Salg">
-                     <padding>
-                        <Insets right="10.0" />
-                     </padding>
-                  </Button>
-                  <Button mnemonicParsing="false" prefHeight="70.0" prefWidth="120.0" styleClass="orangeButton" stylesheets="@CSS_HomePage.css" text="Bestil Vare">
+                  <Button mnemonicParsing="false" prefHeight="70.0" prefWidth="120.0" styleClass="orangeButton" stylesheets="@CSS_HomePage.css" text="Rabat">
                      <padding>
                         <Insets right="10.0" />
                      </padding>
@@ -71,29 +53,12 @@
             </HBox>
             <HBox prefHeight="90.0" prefWidth="286.0" spacing="5.0">
                <children>
-                  <Button mnemonicParsing="false" prefHeight="70.0" prefWidth="120.0" styleClass="orangeButton" stylesheets="@CSS_HomePage.css" text="Tidligere Salg">
+                  <Button mnemonicParsing="false" prefHeight="70.0" prefWidth="120.0" styleClass="orangeButton" stylesheets="@CSS_HomePage.css">
                      <padding>
                         <Insets right="10.0" />
                      </padding>
                   </Button>
-                  <Button mnemonicParsing="false" prefHeight="70.0" prefWidth="120.0" styleClass="orangeButton" stylesheets="@CSS_HomePage.css" text="Reklamation">
-                     <padding>
-                        <Insets right="10.0" />
-                     </padding>
-                  </Button>
-               </children>
-               <padding>
-                  <Insets left="20.0" top="5.0" />
-               </padding>
-            </HBox>
-            <HBox prefHeight="90.0" prefWidth="286.0" spacing="5.0">
-               <children>
-                  <Button mnemonicParsing="false" prefHeight="70.0" prefWidth="120.0" styleClass="orangeButton" stylesheets="@CSS_HomePage.css" text="Gavelisten">
-                     <padding>
-                        <Insets right="10.0" />
-                     </padding>
-                  </Button>
-                  <Button mnemonicParsing="false" prefHeight="70.0" prefWidth="120.0" styleClass="orangeButton" stylesheets="@CSS_HomePage.css" text="Medarbejderkøb">
+                  <Button mnemonicParsing="false" prefHeight="70.0" prefWidth="120.0" styleClass="orangeButton" stylesheets="@CSS_HomePage.css" text="Byttemærke">
                      <padding>
                         <Insets right="10.0" />
                      </padding>
@@ -105,12 +70,12 @@
             </HBox>
             <HBox prefHeight="90.0" prefWidth="286.0" spacing="5.0">
                <children>
-                  <Button mnemonicParsing="false" prefHeight="70.0" prefWidth="120.0" styleClass="orangeButton" stylesheets="@CSS_HomePage.css" text="Manager Menu">
+                  <Button mnemonicParsing="false" prefHeight="70.0" prefWidth="120.0" styleClass="orangeButton" stylesheets="@CSS_HomePage.css" text="Gavekort salg">
                      <padding>
                         <Insets right="10.0" />
                      </padding>
                   </Button>
-                  <Button mnemonicParsing="false" prefHeight="70.0" prefWidth="120.0" text="Manager Login">
+                  <Button mnemonicParsing="false" prefHeight="70.0" prefWidth="120.0" styleClass="orangeButton" stylesheets="@CSS_HomePage.css" text="Gavekort saldo">
                      <padding>
                         <Insets right="10.0" />
                      </padding>
@@ -122,12 +87,46 @@
             </HBox>
             <HBox prefHeight="90.0" prefWidth="286.0" spacing="5.0">
                <children>
-                  <Button mnemonicParsing="false" prefHeight="70.0" prefWidth="120.0" styleClass="redButton" stylesheets="@CSS_HomePage.css" text="Log Af">
+                  <Button mnemonicParsing="false" prefHeight="70.0" prefWidth="120.0" styleClass="orangeButton" stylesheets="@CSS_HomePage.css" text="Vare opslag">
                      <padding>
                         <Insets right="10.0" />
                      </padding>
                   </Button>
-                  <Button mnemonicParsing="false" prefHeight="70.0" prefWidth="120.0" styleClass="orangeButton" stylesheets="@CSS_HomePage.css" text="Opgørelse">
+                  <Button mnemonicParsing="false" prefHeight="70.0" prefWidth="120.0" styleClass="orangeButton" stylesheets="@CSS_HomePage.css" text="Forudbetaling">
+                     <padding>
+                        <Insets right="10.0" />
+                     </padding>
+                  </Button>
+               </children>
+               <padding>
+                  <Insets left="20.0" top="5.0" />
+               </padding>
+            </HBox>
+            <HBox prefHeight="90.0" prefWidth="286.0" spacing="5.0">
+               <children>
+                  <Button mnemonicParsing="false" prefHeight="70.0" prefWidth="120.0" styleClass="orangeButton" stylesheets="@CSS_HomePage.css" text="Prismærke">
+                     <padding>
+                        <Insets right="10.0" />
+                     </padding>
+                  </Button>
+                  <Button mnemonicParsing="false" prefHeight="70.0" prefWidth="120.0" styleClass="orangeButton" stylesheets="@CSS_HomePage.css" text="Loyalitet">
+                     <padding>
+                        <Insets right="10.0" />
+                     </padding>
+                  </Button>
+               </children>
+               <padding>
+                  <Insets left="20.0" top="5.0" />
+               </padding>
+            </HBox>
+            <HBox prefHeight="90.0" prefWidth="286.0" spacing="5.0">
+               <children>
+                  <Button mnemonicParsing="false" prefHeight="70.0" prefWidth="120.0" styleClass="redButton" stylesheets="@CSS_HomePage.css" text="Tilbage">
+                     <padding>
+                        <Insets right="10.0" />
+                     </padding>
+                  </Button>
+                  <Button mnemonicParsing="false" prefHeight="70.0" prefWidth="120.0" styleClass="greenButton" stylesheets="@CSS_HomePage.css" text="Betaling">
                      <padding>
                         <Insets right="10.0" />
                      </padding>
@@ -139,14 +138,14 @@
             </HBox>
             <Separator prefWidth="200.0" />
             <HBox prefHeight="36.0" prefWidth="286.0" spacing="30.0">
-               <padding>
-                  <Insets left="20.0" />
-               </padding>
                <children>
                   <Button mnemonicParsing="false" prefHeight="27.0" prefWidth="86.0" styleClass="yellowButton" stylesheets="@CSS_HomePage.css" text="Slet Linje" />
                   <Label prefHeight="27.0" prefWidth="57.0" text="I Alt:" />
                   <Label fx:id="totalAmountLbl" prefHeight="27.0" prefWidth="57.0" text="0,00" />
                </children>
+               <padding>
+                  <Insets left="20.0" />
+               </padding>
             </HBox>
             <HBox prefHeight="36.0" prefWidth="286.0" spacing="30.0">
                <children>

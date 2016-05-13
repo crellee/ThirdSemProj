@@ -35,6 +35,7 @@ public class EmployeeLoginVerifier
                 if(rs.next())
                 {
                     verified = true;
+                    setEmail(empNumField);
                 }
             }
 
