@@ -62,13 +62,6 @@ public class Main extends Application
         Main_Controller mainController = Main_Controller.getInstance();
         mainController.setStage(primaryStage);
         mainController.showStage();
-        /*
-        Mediator mediator = Mediator.getInstance();
-        mediator.setStage(primaryStage);
-        FrontPage frontPage = new FrontPage();
-        mediator.setFrontPage(frontPage.getFrontPageScene());
-        PointCounter pointCounter = new PointCounter();
-        pointCounter.countPoints(59);
-        */
+
     }
 }
