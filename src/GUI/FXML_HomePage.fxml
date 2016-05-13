@@ -19,7 +19,8 @@
             <TableView id="saleTable" fx:id="mainTable" prefHeight="668.0" prefWidth="718.0">
               <columns>
                 <TableColumn fx:id="prodId" prefWidth="95.0" text="Product ID" />
-                <TableColumn fx:id="desc" prefWidth="119.0" text="Description" />
+                  <TableColumn fx:id="prodName" prefWidth="109.0" text="ProductName" />
+                <TableColumn fx:id="desc" prefWidth="105.0" text="Description" />
                   <TableColumn fx:id="price" prefWidth="95.0" text="Price" />
                   <TableColumn fx:id="disc" prefWidth="95.0" text="Discount" />
                   <TableColumn fx:id="amount" prefWidth="95.0" text="Amount" />

@@ -44,6 +44,8 @@ public class HomePage_Controller implements Initializable
     @FXML
      TableColumn prodId;
     @FXML
+     TableColumn prodName;
+    @FXML
      TableColumn desc;
     @FXML
      TableColumn price;
@@ -52,7 +54,7 @@ public class HomePage_Controller implements Initializable
     @FXML
      TableColumn amount;
     @FXML
-    TableView<Model.Product> mainTable;
+     TableView<Model.Product> mainTable;
 
     ObservableList<Model.Product> allProducts = FXCollections.observableArrayList();
 
@@ -73,10 +75,10 @@ public class HomePage_Controller implements Initializable
     public void addToTable()
     {
         prodId.setCellValueFactory(new PropertyValueFactory<Model.Product, Integer>("productId"));
+        prodName.setCellValueFactory(new PropertyValueFactory<Model.Product, String>("name"));
         desc.setCellValueFactory(new PropertyValueFactory<Model.Product, String>("description"));
         price.setCellValueFactory(new PropertyValueFactory<Model.Product, Double>("price"));
         disc.setCellValueFactory(new PropertyValueFactory<Model.Product, Integer>("discount"));
-        //amount.setCellValueFactory(new PropertyValueFactory<Object, Integer>("1"));
         amount.setCellValueFactory(new PropertyValueFactory<Model.Product, Integer>("amount"));
 
 
@@ -90,6 +92,7 @@ public class HomePage_Controller implements Initializable
                 Model.Product product = new Model.Product();
 
                 product.setProductId(rs.getInt("productId"));
+                product.setName(rs.getString("productName"));
                 product.setDescription(rs.getString("productDescription"));
                 product.setPrice(rs.getInt("price"));
                 product.setDiscount(rs.getInt("discount"));
