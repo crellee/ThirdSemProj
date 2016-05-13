@@ -103,6 +103,7 @@ public class HomePage_Controller implements Initializable
                 Model.Product product = new Model.Product();
 
                 product.setProductId(rs.getInt("productId"));
+                product.setName(rs.getString("productName"));
                 product.setDescription(rs.getString("productDescription"));
                 product.setPrice(rs.getInt("price"));
                 product.setDiscount(rs.getInt("discount"));

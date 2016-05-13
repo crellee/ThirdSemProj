@@ -44,6 +44,8 @@ public class SalePage_Controller implements Initializable
     @FXML
     TableColumn prodId;
     @FXML
+    TableColumn productName;
+    @FXML
     TableColumn desc;
     @FXML
     TableColumn price;
@@ -70,6 +72,7 @@ public class SalePage_Controller implements Initializable
     public void addToTable(Product product)
     {
         prodId.setCellValueFactory(new PropertyValueFactory<Product, Integer>("productId"));
+        productName.setCellValueFactory(new PropertyValueFactory<Product, String>("name"));
         desc.setCellValueFactory(new PropertyValueFactory<Model.Product, String>("description"));
         price.setCellValueFactory(new PropertyValueFactory<Model.Product, Double>("price"));
         disc.setCellValueFactory(new PropertyValueFactory<Model.Product, Integer>("discount"));
@@ -111,6 +114,7 @@ public class SalePage_Controller implements Initializable
                 Model.Product product = new Model.Product();
 
                 product.setProductId(rs.getInt("productId"));
+                product.setName(rs.getString("productName"));
                 product.setDescription(rs.getString("productDescription"));
                 product.setPrice(rs.getInt("price"));
                 product.setDiscount(rs.getInt("discount"));
