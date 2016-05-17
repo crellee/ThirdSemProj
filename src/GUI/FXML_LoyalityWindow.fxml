@@ -19,10 +19,22 @@
       </Label>
    </top>
    <bottom>
-      <Button id="okButton" fx:id="okButton" mnemonicParsing="false" onAction="#loyalityHandler" prefHeight="27.0" prefWidth="92.0" text="OK" BorderPane.alignment="CENTER">
-         <BorderPane.margin>
-            <Insets bottom="20.0" left="460.0" />
-         </BorderPane.margin>
-      </Button>
+      <HBox prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <children>
+            <Button mnemonicParsing="false" prefHeight="27.0" prefWidth="92.0" text="New">
+               <HBox.margin>
+                  <Insets left="20.0" />
+               </HBox.margin>
+            </Button>
+            <Button id="okButton" fx:id="okButton" mnemonicParsing="false" onAction="#loyalityHandler" prefHeight="27.0" prefWidth="92.0" text="OK">
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+               <HBox.margin>
+                  <Insets left="420.0" />
+               </HBox.margin>
+            </Button>
+         </children>
+      </HBox>
    </bottom>
 </BorderPane>
