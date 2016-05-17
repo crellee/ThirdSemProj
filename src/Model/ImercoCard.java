@@ -40,8 +40,9 @@ public class ImercoCard
         return activePoints;
     }
 
-    public void setActivePoints(int activePoints)
+    public int setActivePoints(int activePoints)
     {
         this.activePoints = activePoints;
+        return activePoints;
     }
 }

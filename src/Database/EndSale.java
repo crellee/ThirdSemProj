@@ -113,4 +113,25 @@ public class EndSale
     }
 
 
+
+        public static ResultSet getImercoPoints()
+        {
+
+            ResultSet rs = null;
+            try
+            {
+                Connection conn = DBConnection.getConnection();
+                String sqlString = "SELECT * " +
+                        "FROM ImercoCard WHERE imercoCardId = '"+imercoCardId+"' ";
+                rs = conn.createStatement().executeQuery(sqlString);
+            }
+            catch (Exception e)
+            {
+
+            }
+
+            return rs;
+        }
+
+
 }

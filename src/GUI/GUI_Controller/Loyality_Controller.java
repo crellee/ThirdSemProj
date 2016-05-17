@@ -51,6 +51,10 @@ public class Loyality_Controller implements Initializable
         {
             EndSale.setImercoCard(textField);
             System.out.println(EndSale.getImercoCard());
+            Stage loyalityStage = (Stage) okButton.getScene().getWindow();
+            loyalityStage.close();
+            SalePage_Controller salePage_controller = new SalePage_Controller();
+            salePage_controller.setLoyaltyPoints();
         }
     }
     public void loyalityClose()

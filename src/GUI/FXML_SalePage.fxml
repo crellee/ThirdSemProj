@@ -16,6 +16,7 @@
                </font>
             </Label>
             <TextField fx:id="textField1" onKeyPressed="#getProductFromDB" />
+            <Label fx:id="pointLabel" prefHeight="17.0" prefWidth="312.0" />
             <TableView id="saleTable" fx:id="mainTable" prefHeight="668.0" prefWidth="718.0">
                <columns>
                   <TableColumn fx:id="prodId" prefWidth="95.0" text="Product ID" />
