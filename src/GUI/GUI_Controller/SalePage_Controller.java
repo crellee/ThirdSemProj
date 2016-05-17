@@ -24,6 +24,7 @@ import java.util.ResourceBundle;
  */
 public class SalePage_Controller implements Initializable
 {
+    Stage loyalityStage = new Stage();
 
     @FXML
     private Label totalAmountLbl;
@@ -168,10 +169,17 @@ public class SalePage_Controller implements Initializable
 
     public void loyalityButtonShow() throws IOException
     {
-        Stage stage = new Stage();
+        Loyality_Controller loyality_controller = new Loyality_Controller();
+        loyality_controller.showLoyalityWindow();
+        /*
         Parent root = FXMLLoader.load(getClass().getResource("/GUI/FXML_LoyalityWindow.fxml"));
         Scene scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
+        loyalityStage.setScene(scene);
+        loyalityStage.show();
+        */
+    }
+    public void loyalityClose()
+    {
+        loyalityStage.close();
     }
 }

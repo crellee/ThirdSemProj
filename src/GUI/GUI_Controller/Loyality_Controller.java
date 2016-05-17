@@ -2,10 +2,15 @@ package GUI.GUI_Controller;
 
 import Database.EndSale;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -14,6 +19,9 @@ import java.util.ResourceBundle;
  */
 public class Loyality_Controller implements Initializable
 {
+    @FXML
+    private Button cancelButton;
+
     @FXML
     private Button okButton;
 
@@ -25,6 +33,17 @@ public class Loyality_Controller implements Initializable
     {
 
     }
+
+
+    public void showLoyalityWindow() throws IOException
+    {
+        Stage loyalityStage = new Stage();
+        Parent root = FXMLLoader.load(getClass().getResource("/GUI/FXML_LoyalityWindow.fxml"));
+        Scene scene = new Scene(root);
+        loyalityStage.setScene(scene);
+        loyalityStage.show();
+    }
+
     public void loyalityHandler()
     {
 
@@ -33,6 +52,10 @@ public class Loyality_Controller implements Initializable
             EndSale.setImercoCard(textField);
             System.out.println(EndSale.getImercoCard());
         }
-
+    }
+    public void loyalityClose()
+    {
+        Stage loyalityStage = (Stage) cancelButton.getScene().getWindow();
+        loyalityStage.close();
     }
 }
