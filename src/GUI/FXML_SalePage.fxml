@@ -110,7 +110,7 @@
                         <Insets right="10.0" />
                      </padding>
                   </Button>
-                  <Button mnemonicParsing="false" prefHeight="70.0" prefWidth="120.0" styleClass="orangeButton" stylesheets="@CSS_HomePage.css" text="Loyalitet">
+                  <Button mnemonicParsing="false" onAction="#loyalityButtonShow" prefHeight="70.0" prefWidth="120.0" styleClass="orangeButton" stylesheets="@CSS_HomePage.css" text="Loyalitet">
                      <padding>
                         <Insets right="10.0" />
                      </padding>

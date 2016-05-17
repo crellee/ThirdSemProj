@@ -3,6 +3,8 @@ package Database;
 import javafx.scene.control.TextField;
 
 import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Calendar;
 import java.util.Date;
@@ -17,6 +19,7 @@ public class EndSale
     static Random ran = new Random();
     static int recieptIdInt = ran.nextInt(100000);
     static int saltIdInt = ran.nextInt(10000);
+    static int imercoCardId;
 
     public static void createReciept(TextField imercoCardID, String paymentTypeId)
     {
@@ -67,5 +70,47 @@ public class EndSale
 
         }
     }
+
+    public static boolean verifyImercoCard(TextField textField)
+    {
+
+        boolean verified = false;
+        imercoCardId = Integer.parseInt(textField.getText());
+
+        try {
+            Connection conn = DBConnection.getConnection();
+            Statement stmt = conn.createStatement();
+            ResultSet rs;
+
+            if (textField != null)
+            {
+                String sqlString = "SELECT * FROM ImercoCard WHERE imercoCardId = '" + imercoCardId + "'";
+                rs = stmt.executeQuery(sqlString);
+
+                if (rs.next())
+                {
+                    verified = true;
+                    setImercoCard(textField);
+                }
+            }
+
+        } catch (SQLException e) {
+
+        }
+        return verified;
+
+    }
+
+    public static void setImercoCard(TextField textField)
+    {
+        int imercoInt = Integer.parseInt(textField.getText());
+        imercoCardId = imercoInt;
+    }
+
+    public static Integer getImercoCard()
+    {
+        return imercoCardId;
+    }
+
 
 }

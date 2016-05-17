@@ -7,9 +7,9 @@
 <?import javafx.scene.layout.*?>
 
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="152.0" prefWidth="480.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.GUI_Controller.Loyality_Controller">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="325.0" prefWidth="647.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.GUI_Controller.Loyality_Controller">
    <center>
-      <TextField BorderPane.alignment="CENTER" />
+      <TextField fx:id="textField" BorderPane.alignment="CENTER" />
    </center>
    <top>
       <Label prefHeight="26.0" prefWidth="261.0" text="Insert Imerco Card Number" BorderPane.alignment="CENTER">
@@ -21,7 +21,7 @@
    <bottom>
       <Button id="okButton" fx:id="okButton" mnemonicParsing="false" onAction="#loyalityHandler" prefHeight="27.0" prefWidth="92.0" text="OK" BorderPane.alignment="CENTER">
          <BorderPane.margin>
-            <Insets left="420.0" />
+            <Insets bottom="20.0" left="460.0" />
          </BorderPane.margin>
       </Button>
    </bottom>

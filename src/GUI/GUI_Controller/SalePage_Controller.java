@@ -9,10 +9,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Label;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 
@@ -43,6 +40,8 @@ public class SalePage_Controller implements Initializable
     @FXML
     private Label discountLbl;
     private int discountInt;
+
+
 
     @FXML
     private TextField textField1;
@@ -165,5 +164,14 @@ public class SalePage_Controller implements Initializable
         discountInt = 0;
         String intToString = Integer.toString(discountInt);
         discountLbl.setText(intToString);
+    }
+
+    public void loyalityButtonShow() throws IOException
+    {
+        Stage stage = new Stage();
+        Parent root = FXMLLoader.load(getClass().getResource("/GUI/FXML_LoyalityWindow.fxml"));
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
     }
 }
