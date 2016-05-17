@@ -5,12 +5,11 @@ import Model.Product;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -43,7 +42,6 @@ public class SalePage_Controller implements Initializable
     private int discountInt;
 
 
-
     @FXML
     private TextField textField1;
     @FXML
@@ -63,14 +61,14 @@ public class SalePage_Controller implements Initializable
 
     ObservableList<Product> allProducts = FXCollections.observableArrayList();
 
-    FirstProduct firstProduct = FirstProduct.getInstance();
+    FirstProductTransfer firstProductTransfer = FirstProductTransfer.getInstance();
 
     @Override
     public void initialize(URL location, ResourceBundle resources)
     {
         //When this window opens, we get the first product which was set my HomePage_Controller and add product
         //to the TableView
-        Product product = firstProduct.getFirstProduct();
+        Product product = firstProductTransfer.getFirstProduct();
         textField1.setText(Integer.toString(product.getProductId()));
         addToTable(product);
     }
@@ -104,32 +102,33 @@ public class SalePage_Controller implements Initializable
         updatePaidAmount();
         updateToOwe();
         updateDiscount();
-
     }
 
-
-    public void getProductFromDB()
+    @FXML
+    public void getProductFromDB(KeyEvent event)
     {
-        try
+        if (event.getCode().equals(KeyCode.ENTER))
         {
-            ResultSet rs = ProductVerifier.tableShow(textField1);
-            while (rs.next())
+            try
             {
-                Model.Product product = new Model.Product();
+                ResultSet rs = ProductVerifier.tableShow(textField1);
+                while (rs.next())
+                {
+                    Model.Product product = new Model.Product();
 
-                product.setProductId(rs.getInt("productId"));
-                product.setName(rs.getString("productName"));
-                product.setDescription(rs.getString("productDescription"));
-                product.setPrice(rs.getInt("price"));
-                product.setDiscount(rs.getInt("discount"));
-                product.setAmount(1);
+                    product.setProductId(rs.getInt("productId"));
+                    product.setName(rs.getString("productName"));
+                    product.setDescription(rs.getString("productDescription"));
+                    product.setPrice(rs.getInt("price"));
+                    product.setDiscount(rs.getInt("discount"));
+                    product.setAmount(1);
 
-                addToTable(product);
+                    addToTable(product);
+                }
+            } catch (SQLException e)
+            {
+                e.printStackTrace();
             }
-        }
-        catch (SQLException e)
-        {
-            e.printStackTrace();
         }
     }
 
@@ -178,6 +177,38 @@ public class SalePage_Controller implements Initializable
         loyalityStage.show();
         */
     }
+
+    public void clearTable()
+    {
+        allProducts.clear();
+        mainTable.setItems(allProducts);
+
+        updateTotalAmount();
+        updatePaidAmount();
+        updateToOwe();
+        updateDiscount();
+    }
+
+    public void clearLine()
+    {
+        Product product = mainTable.getSelectionModel().getSelectedItem();
+
+        int productId = product.getProductId();
+        for(int i = 0; i < allProducts.size(); i++)
+        {
+            if (allProducts.get(i).getProductId() == productId)
+            {
+                allProducts.remove(i);
+            }
+        }
+        mainTable.setItems(allProducts);
+
+        updateTotalAmount();
+        updatePaidAmount();
+        updateToOwe();
+        updateDiscount();
+    }
+
     public void loyalityClose()
     {
         loyalityStage.close();

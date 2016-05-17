@@ -15,7 +15,7 @@
                   <Font name="System Bold Italic" size="17.0" />
                </font>
             </Label>
-            <TextField fx:id="textField1" />
+            <TextField fx:id="textField1" onKeyPressed="#getProductFromDB" />
             <TableView id="saleTable" fx:id="mainTable" prefHeight="668.0" prefWidth="718.0">
                <columns>
                   <TableColumn fx:id="prodId" prefWidth="95.0" text="Product ID" />
@@ -37,7 +37,7 @@
          <children>
             <HBox prefHeight="90.0" prefWidth="286.0" spacing="5.0">
                <children>
-                  <Button mnemonicParsing="false" onAction="#getProductFromDB" prefHeight="70.0" prefWidth="120.0" styleClass="orangeButton" stylesheets="@CSS_HomePage.css" text="Antal">
+                  <Button mnemonicParsing="false" prefHeight="70.0" prefWidth="120.0" styleClass="orangeButton" stylesheets="@CSS_HomePage.css" text="Antal">
                      <padding>
                         <Insets right="10.0" />
                      </padding>
@@ -140,7 +140,7 @@
             <Separator prefWidth="200.0" />
             <HBox prefHeight="36.0" prefWidth="286.0" spacing="30.0">
                <children>
-                  <Button mnemonicParsing="false" prefHeight="27.0" prefWidth="86.0" styleClass="yellowButton" stylesheets="@CSS_HomePage.css" text="Slet Linje" />
+                  <Button mnemonicParsing="false" onAction="#clearLine" prefHeight="27.0" prefWidth="86.0" styleClass="yellowButton" stylesheets="@CSS_HomePage.css" text="Slet Linje" />
                   <Label prefHeight="27.0" prefWidth="57.0" text="I Alt:" />
                   <Label fx:id="totalAmountLbl" prefHeight="27.0" prefWidth="57.0" text="0,00" />
                </children>
@@ -150,7 +150,7 @@
             </HBox>
             <HBox prefHeight="36.0" prefWidth="286.0" spacing="30.0">
                <children>
-                  <Button mnemonicParsing="false" prefHeight="27.0" prefWidth="86.0" styleClass="redButton" stylesheets="@CSS_HomePage.css" text="Slet Alt" />
+                  <Button fx:id="clearTableButton" mnemonicParsing="false" onAction="#clearTable" prefHeight="27.0" prefWidth="86.0" styleClass="redButton" stylesheets="@CSS_HomePage.css" text="Slet Alt" />
                   <Label prefHeight="27.0" prefWidth="57.0" text="Betalt:" />
                   <Label fx:id="paidAmountLbl" prefHeight="27.0" prefWidth="57.0" text="0,00" />
                </children>
