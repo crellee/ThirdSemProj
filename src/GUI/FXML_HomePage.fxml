@@ -10,7 +10,7 @@
    <center>
       <VBox id="textField" prefHeight="768.0" prefWidth="750.0" spacing="4.0" BorderPane.alignment="CENTER">
          <children>
-            <Label prefHeight="31.0" prefWidth="292.0" text="Enter prodcuct number:">
+            <Label prefHeight="31.0" prefWidth="292.0" text="Enter product number:">
                <font>
                   <Font name="System Bold Italic" size="17.0" />
                </font>
