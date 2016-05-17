@@ -44,6 +44,8 @@ public class SalePage_Controller implements Initializable
     @FXML
     TableColumn prodId;
     @FXML
+    TableColumn productName;
+    @FXML
     TableColumn desc;
     @FXML
     TableColumn price;
@@ -54,14 +56,16 @@ public class SalePage_Controller implements Initializable
     @FXML
     TableView<Product> mainTable;
 
-    ObservableList<Product> data2 = FXCollections.observableArrayList();
+    ObservableList<Product> allProducts = FXCollections.observableArrayList();
 
-    FirstProductTest firstProductTest = FirstProductTest.getInstance();
+    FirstProduct firstProduct = FirstProduct.getInstance();
 
     @Override
     public void initialize(URL location, ResourceBundle resources)
     {
-        Product product = firstProductTest.getFirstProduct();
+        //When this window opens, we get the first product which was set my HomePage_Controller and add product
+        //to the TableView
+        Product product = firstProduct.getFirstProduct();
         textField1.setText(Integer.toString(product.getProductId()));
         addToTable(product);
     }
@@ -70,33 +74,31 @@ public class SalePage_Controller implements Initializable
     public void addToTable(Product product)
     {
         prodId.setCellValueFactory(new PropertyValueFactory<Product, Integer>("productId"));
+        productName.setCellValueFactory(new PropertyValueFactory<Product, String>("name"));
         desc.setCellValueFactory(new PropertyValueFactory<Model.Product, String>("description"));
         price.setCellValueFactory(new PropertyValueFactory<Model.Product, Double>("price"));
         disc.setCellValueFactory(new PropertyValueFactory<Model.Product, Integer>("discount"));
         amount.setCellValueFactory(new PropertyValueFactory<Model.Product, Integer>("amount"));
 
 
-        ObservableList<Model.Product> data = FXCollections.observableArrayList();
-        data.addAll(product);
-
-
-            //følgende loop med indestående if sætning tjekker hvis et produkt der bliver tilføjet allerede
-            //eksisterer i tabellen. Hvis dette er sandt inkrementeres amount, så varerene ikke bliver tilføjet dobbelt
-            for(int i = 0; i < data2.size(); i++)
+        //følgende loop med indestående if sætning tjekker hvis et produkt der bliver tilføjet allerede
+        //eksisterer i tabellen. Hvis dette er sandt inkrementeres amount, så varerene ikke bliver tilføjet dobbelt
+        for(int i = 0; i < allProducts.size(); i++)
+        {
+            if(allProducts.get(i).getProductId() == product.getProductId())
             {
-                if(data2.get(i).getProductId() == data.get(0).getProductId())
-                {
-                    int j = data2.get(i).getAmount() + 1;
-                    data.get(0).setAmount(j);
-                    data2.remove(i);
-                }
+                int j = allProducts.get(i).getAmount() + 1;
+                product.setAmount(j);
+                allProducts.remove(i);
             }
-            data2.addAll(data);
-            mainTable.setItems(data2);
-        totalAmount();
-        paidAmount();
-        toOwe();
-        discount();
+        }
+        allProducts.addAll(product);
+        mainTable.setItems(allProducts);
+
+        updateTotalAmount();
+        updatePaidAmount();
+        updateToOwe();
+        updateDiscount();
 
     }
 
@@ -111,6 +113,7 @@ public class SalePage_Controller implements Initializable
                 Model.Product product = new Model.Product();
 
                 product.setProductId(rs.getInt("productId"));
+                product.setName(rs.getString("productName"));
                 product.setDescription(rs.getString("productDescription"));
                 product.setPrice(rs.getInt("price"));
                 product.setDiscount(rs.getInt("discount"));
@@ -125,26 +128,26 @@ public class SalePage_Controller implements Initializable
         }
     }
 
-    public void totalAmount()
+    public void updateTotalAmount()
     {
         totalAmountDoub = 0;
-        for (int i = 0; i < data2.size(); i++)
+        for (int i = 0; i < allProducts.size(); i++)
         {
-            totalAmountDoub += data2.get(i).getPrice() * data2.get(i).getAmount();
+            totalAmountDoub += allProducts.get(i).getPrice() * allProducts.get(i).getAmount();
         }
 
         String doubleToString = Double.toString(totalAmountDoub);
         totalAmountLbl.setText(doubleToString);
     }
 
-    public void paidAmount()
+    public void updatePaidAmount()
     {
         paidAmountDoub = 0;
         String doubleToString = Double.toString(paidAmountDoub);
         paidAmountLbl.setText(doubleToString);
     }
 
-    public void toOwe()
+    public void updateToOwe()
     {
         toOweDoub = 0;
         toOweDoub = totalAmountDoub - paidAmountDoub;
@@ -152,7 +155,7 @@ public class SalePage_Controller implements Initializable
         toOweLbl.setText(doubleToString);
     }
 
-    public void discount()
+    public void updateDiscount()
     {
         discountInt = 0;
         String intToString = Integer.toString(discountInt);
