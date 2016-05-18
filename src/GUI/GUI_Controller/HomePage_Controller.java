@@ -2,17 +2,12 @@ package GUI.GUI_Controller;
 
 import Database.ProductVerifier;
 import Model.Product;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Label;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -27,6 +22,8 @@ import java.util.ResourceBundle;
 public class HomePage_Controller implements Initializable
 {
 
+    @FXML
+    private Button startSaleBtn;
 
     @FXML
     private Label totalAmountLbl;
@@ -59,22 +56,22 @@ public class HomePage_Controller implements Initializable
     @FXML
     TableView<Model.Product> mainTable;
 
-    //Instance of FirstProduct class.
+    //Instance of FirstProductTransfer class.
     //This is necessary for getting the first product in the textfield from this controller (HomePage_Controller)
     //into SalePage_Controller, where we will use it, to set into the TableView.
-    private FirstProduct firstProduct = FirstProduct.getInstance();
+    private FirstProductTransfer firstProductTransfer = FirstProductTransfer.getInstance();
 
 
     @Override
     public void initialize(URL location, ResourceBundle resources)
     {
-
+        startSaleBtn.setDefaultButton(true);
     }
 
     public void toSalePage()
     {
         Product product = getFirstProductFromDB();
-        firstProduct.setFirstProduct(product);
+        firstProductTransfer.setFirstProduct(product);
 
         Main_Controller main_controller = Main_Controller.getInstance();
         Parent root = null;

@@ -1,17 +1,20 @@
 package GUI.GUI_Controller;
 
+import Database.EndSale;
 import Database.ProductVerifier;
+import Model.ImercoCard;
 import Model.Product;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Label;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
+import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.net.URL;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -22,6 +25,7 @@ import java.util.ResourceBundle;
  */
 public class SalePage_Controller implements Initializable
 {
+    Stage loyalityStage = new Stage();
 
     @FXML
     private Label totalAmountLbl;
@@ -38,6 +42,13 @@ public class SalePage_Controller implements Initializable
     @FXML
     private Label discountLbl;
     private int discountInt;
+
+    @FXML
+    private Label pointLabel;
+
+    static int customerPoints;
+
+
 
     @FXML
     private TextField textField1;
@@ -58,14 +69,14 @@ public class SalePage_Controller implements Initializable
 
     ObservableList<Product> allProducts = FXCollections.observableArrayList();
 
-    FirstProduct firstProduct = FirstProduct.getInstance();
+    FirstProductTransfer firstProductTransfer = FirstProductTransfer.getInstance();
 
     @Override
     public void initialize(URL location, ResourceBundle resources)
     {
         //When this window opens, we get the first product which was set my HomePage_Controller and add product
         //to the TableView
-        Product product = firstProduct.getFirstProduct();
+        Product product = firstProductTransfer.getFirstProduct();
         textField1.setText(Integer.toString(product.getProductId()));
         addToTable(product);
     }
@@ -102,29 +113,31 @@ public class SalePage_Controller implements Initializable
 
     }
 
-
-    public void getProductFromDB()
+    @FXML
+    public void getProductFromDB(KeyEvent event)
     {
-        try
+        if (event.getCode().equals(KeyCode.ENTER))
         {
-            ResultSet rs = ProductVerifier.tableShow(textField1);
-            while (rs.next())
+            try
             {
-                Model.Product product = new Model.Product();
+                ResultSet rs = ProductVerifier.tableShow(textField1);
+                while (rs.next())
+                {
+                    Model.Product product = new Model.Product();
 
-                product.setProductId(rs.getInt("productId"));
-                product.setName(rs.getString("productName"));
-                product.setDescription(rs.getString("productDescription"));
-                product.setPrice(rs.getInt("price"));
-                product.setDiscount(rs.getInt("discount"));
-                product.setAmount(1);
+                    product.setProductId(rs.getInt("productId"));
+                    product.setName(rs.getString("productName"));
+                    product.setDescription(rs.getString("productDescription"));
+                    product.setPrice(rs.getInt("price"));
+                    product.setDiscount(rs.getInt("discount"));
+                    product.setAmount(1);
 
-                addToTable(product);
+                    addToTable(product);
+                }
+            } catch (SQLException e)
+            {
+                e.printStackTrace();
             }
-        }
-        catch (SQLException e)
-        {
-            e.printStackTrace();
         }
     }
 
@@ -162,4 +175,66 @@ public class SalePage_Controller implements Initializable
         discountLbl.setText(intToString);
     }
 
+    public void loyalityButtonShow() throws IOException
+    {
+        Loyality_Controller loyality_controller = new Loyality_Controller();
+        loyality_controller.showLoyalityWindow();
+        /*
+        Parent root = FXMLLoader.load(getClass().getResource("/GUI/FXML_LoyalityWindow.fxml"));
+        Scene scene = new Scene(root);
+        loyalityStage.setScene(scene);
+        loyalityStage.show();
+        */
+    }
+
+    public void clearTable()
+    {
+        allProducts.clear();
+        mainTable.setItems(allProducts);
+
+        updateTotalAmount();
+        updatePaidAmount();
+        updateToOwe();
+        updateDiscount();
+    }
+
+    public void clearLine()
+    {
+        Product product = mainTable.getSelectionModel().getSelectedItem();
+
+        int productId = product.getProductId();
+        for(int i = 0; i < allProducts.size(); i++)
+        {
+            if (allProducts.get(i).getProductId() == productId)
+            {
+                allProducts.remove(i);
+            }
+        }
+        mainTable.setItems(allProducts);
+
+        updateTotalAmount();
+        updatePaidAmount();
+        updateToOwe();
+        updateDiscount();
+    }
+
+    public void setLoyaltyPoints()
+    {
+        //pointLabel.setText(" " + EndSale.getImercoCard());
+
+        try
+        {
+            ResultSet rs = EndSale.getImercoPoints();
+            while(rs.next())
+            {
+                ImercoCard imercoCard = new ImercoCard();
+                int points = imercoCard.setActivePoints(rs.getInt("point"));
+                pointLabel.setText("HEJ");
+
+
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
 }
