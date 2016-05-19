@@ -30,12 +30,12 @@ public class CustomerTable
             stmt = conn.createStatement();
 
             sqlString = "CREATE TABLE IF NOT EXISTS Customer " +
-                    "(customerId INT(3) NOT NULL, " +
+                    "(customerId INT(3) NOT NULL AUTO_INCREMENT, " +
                     "customerFirstName VARCHAR(30) , " +
                     "customerLastName VARCHAR(30) , " +
                     "email VARCHAR(40) NOT NULL, " +
                     "zipCode SMALLINT(4) , " +
-                    "PRIMARY KEY (customerId) )";
+                    "PRIMARY KEY (customerId))";
 
 
             stmt.executeUpdate(sqlString);

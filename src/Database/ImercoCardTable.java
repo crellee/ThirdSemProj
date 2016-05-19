@@ -30,7 +30,7 @@ public class ImercoCardTable
 
             sqlString = "CREATE TABLE IF NOT EXISTS ImercoCard " +
                     "(imercoCardId INT(10) NOT NULL, " +
-                    "customerId INT(7), " +
+                    "customerId INT(3) NOT NULL, " +
                     "point INT(10), " +
                     "FOREIGN KEY (customerId) REFERENCES Customer(customerId), " +
                     "PRIMARY KEY (imercoCardId))";

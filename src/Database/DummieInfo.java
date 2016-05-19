@@ -28,10 +28,10 @@ public class DummieInfo
             Connection conn = DBConnection.getConnection();
             stmt = conn.createStatement();
 
-            sqlString ="INSERT INTO customer (customerId, customerFirstName, customerLastName, email, zipCode)" +
-                    "VALUES( 15 ,'Hanne','Frank','hanne@live.dk', 2500 )," +
-                    "(11, 'Bo', 'Gremling', 'bobo@gmail.dk', 2200)," +
-                    "(5, 'Jarla', 'Nilsen', 'jn@mail.dk', 3500);";
+            sqlString ="INSERT INTO customer (customerFirstName, customerLastName, email, zipCode)" +
+                    "VALUES('Hanne','Frank','hanne@live.dk', 2500 )," +
+                    "('Bo', 'Gremling', 'bobo@gmail.dk', 2200)," +
+                    "('Jarla', 'Nilsen', 'jn@mail.dk', 3500)";
 
 
             stmt.executeUpdate(sqlString);

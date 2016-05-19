@@ -33,7 +33,7 @@ public class ReceiptTable
 
             sqlString = "CREATE TABLE IF NOT EXISTS Receipts " +
                     "(receiptId INTEGER(10) NOT NULL, " +
-                    "employeeId INTEGER(10) NOT NULL, " +
+                    "employeeId INTEGER(3) NOT NULL, " +
                     "imercoCardId INTEGER(10) NOT NULL, " +
                     "dateIssued VARCHAR (10), " +
                     "paymentType VARCHAR (20), " +
