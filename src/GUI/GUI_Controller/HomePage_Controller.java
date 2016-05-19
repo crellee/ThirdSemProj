@@ -87,7 +87,6 @@ public class HomePage_Controller implements Initializable
         Scene scene = new Scene(root);
         homeScreenStage.setScene(scene);
         main_controller.showStage();
-
     }
 
     private Product getFirstProductFromDB()
