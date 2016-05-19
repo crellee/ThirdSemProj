@@ -3,6 +3,7 @@ package Database;
 import javafx.scene.control.TextField;
 
 import java.sql.Connection;
+import java.sql.ResultSet;
 import java.sql.Statement;
 
 /**
@@ -36,17 +37,30 @@ public class CreateCustomer
         return succesfull;
     }
 
-    public static void getCustomerId(TextField email)
+    public static int getCustomerId(TextField email)
     {
+        int id = 0;
         String emailStr = email.getText().toString();
         try
         {
             Connection conn = DBConnection.getConnection();
             Statement stmt = conn.createStatement();
+            ResultSet rs;
+
 
             String sqlString = ("SELECT CustomerId FROM Customer WHERE email = '"+emailStr+"' ");
+            rs = stmt.executeQuery(sqlString);
+
+            id = rs.getInt("CustomerId");
+
+
 
         }
+        catch (Exception e)
+        {
+
+        }
+        return id;
     }
 
 }
