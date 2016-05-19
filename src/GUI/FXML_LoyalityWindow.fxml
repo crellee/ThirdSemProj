@@ -13,7 +13,7 @@
    <bottom>
       <HBox prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
-            <Button mnemonicParsing="false" prefHeight="27.0" prefWidth="92.0" text="New">
+            <Button mnemonicParsing="false" onAction="#openNewCustomerWindow" prefHeight="27.0" prefWidth="92.0" text="New">
                <HBox.margin>
                   <Insets left="20.0" />
                </HBox.margin>

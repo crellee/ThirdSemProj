@@ -97,4 +97,21 @@ public class Loyality_Controller implements Initializable
         Stage loyalityStage = (Stage) cancelButton.getScene().getWindow();
         loyalityStage.close();
     }
+
+    public void openNewCustomerWindow()
+    {
+        loyalityClose();
+        Stage newCustomerStage = new Stage();
+        Parent root = null;
+        try
+        {
+            root = FXMLLoader.load(getClass().getResource("/GUI/FXML_NewCustomerWindow.fxml"));
+        } catch (IOException e)
+        {
+            e.printStackTrace();
+        }
+        Scene scene = new Scene(root);
+        newCustomerStage.setScene(scene);
+        newCustomerStage.show();
+    }
 }

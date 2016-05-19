@@ -12,10 +12,10 @@ public class CreateCustomer
 {
     public static void createCustomer(TextField fname, TextField lname, TextField email, TextField zip)
     {
-        String fnameStr = fname.toString();
-        String lnameStr = lname.toString();
-        String emailStr = email.toString();
-        String zipStr = zip.toString();
+        String fnameStr = fname.getText().toString();
+        String lnameStr = lname.getText().toString();
+        String emailStr = email.getText().toString();
+        int zipInt = Integer.parseInt(zip.getText().toString());
 
         try
         {
@@ -23,7 +23,7 @@ public class CreateCustomer
             Statement stmt = conn.createStatement();
 
             String sqlString = ("INSERT INTO Customer (customerFirstName, customerLastName, email, zipCode) " +
-                    "VALUES ('"+fnameStr+"' , '"+lnameStr+"' , '"+emailStr+"' , '"+zipStr+"'  ) ");
+                    "VALUES ('"+fnameStr+"' , '"+lnameStr+"' , '"+emailStr+"' , '"+zipInt+"'  ) ");
             stmt.executeUpdate(sqlString);
         }
         catch (Exception e)
