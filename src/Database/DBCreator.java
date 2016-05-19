@@ -14,7 +14,7 @@ public class DBCreator
 
     //  DatabaseController credentials
     final static String USER = "root";
-    final static String PASS = "blaBla";
+    final static String PASS = "admin";
 
     public static void create()
     {

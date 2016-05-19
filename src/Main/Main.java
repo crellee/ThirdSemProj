@@ -47,7 +47,7 @@ public class Main extends Application
             Dummy info is created when the program closes after running for the first time.
             After first run of program, comment it out so we dont get duplicates in database.
          */
-        //DummieInfo.getInstance().customerInfo();
+        DummieInfo.getInstance().customerInfo();
 
     }
 

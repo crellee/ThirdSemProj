@@ -43,7 +43,7 @@ public class DummieInfo
 
             stmt2 = conn.createStatement();
             sqlString2 = "INSERT INTO imercocard(imercoCardId, customerId, point)"+
-                    "VALUES(5, 15, 12),(8, 11, 225),(6, 5, 55);";
+                    "VALUES(5, 1, 12),(8, 2, 225),(6, 3, 55);";
 
             stmt2.executeUpdate(sqlString2);
 
