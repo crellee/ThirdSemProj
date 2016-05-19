@@ -6,18 +6,10 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="325.0" prefWidth="647.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.GUI_Controller.Loyality_Controller">
    <center>
       <TextField fx:id="textField" BorderPane.alignment="CENTER" />
    </center>
-   <top>
-      <Label prefHeight="26.0" prefWidth="261.0" text="Insert Imerco Card Number" BorderPane.alignment="CENTER">
-         <font>
-            <Font size="20.0" />
-         </font>
-      </Label>
-   </top>
    <bottom>
       <HBox prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
@@ -42,4 +34,21 @@
          </children>
       </HBox>
    </bottom>
+   <top>
+      <VBox prefHeight="55.0" prefWidth="647.0" BorderPane.alignment="CENTER">
+         <children>
+            <Label prefHeight="26.0" prefWidth="261.0" text="Insert Imerco Card Number">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <Button mnemonicParsing="false" onAction="#setLoyaltyPoints" prefHeight="27.0" prefWidth="112.0" text="Get points">
+               <VBox.margin>
+                  <Insets left="550.0" />
+               </VBox.margin>
+            </Button>
+            <Label fx:id="pointsLabel" prefHeight="17.0" prefWidth="148.0" />
+         </children>
+      </VBox>
+   </top>
 </BorderPane>
