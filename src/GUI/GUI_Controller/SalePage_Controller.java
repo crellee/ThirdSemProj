@@ -46,6 +46,9 @@ public class SalePage_Controller implements Initializable
     @FXML
     private Label pointLabel;
 
+    @FXML
+    Button loyalityBtn;
+
     static int customerPoints;
 
 
@@ -216,25 +219,5 @@ public class SalePage_Controller implements Initializable
         updatePaidAmount();
         updateToOwe();
         updateDiscount();
-    }
-
-    public void setLoyaltyPoints()
-    {
-        //pointLabel.setText(" " + EndSale.getImercoCard());
-
-        try
-        {
-            ResultSet rs = EndSale.getImercoPoints();
-            while(rs.next())
-            {
-                ImercoCard imercoCard = new ImercoCard();
-                int points = imercoCard.setActivePoints(rs.getInt("point"));
-                pointLabel.setText("HEJ");
-
-
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
     }
 }
