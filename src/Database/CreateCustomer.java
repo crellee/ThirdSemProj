@@ -48,21 +48,24 @@ public class CreateCustomer
             String sqlString = ("SELECT * FROM Customer WHERE email = '" + emailStr + "' ");
             rs = stmt.executeQuery(sqlString);
 
-            id = rs.getInt("customerId");
-
+            while(rs.next())
+            {
+                id = rs.getInt("customerId");
+            }
 
         } catch (Exception e) {
 
         }
+        System.out.println(id);
         return id;
     }
 
     public static void createImercoCard(TextField imercoCard)
     {
+
         int imercoCardInt = Integer.parseInt(imercoCard.getText().toString());
         int imercoPoints = 0;
         int customerId = getCustomerId(emailField);
-
 
         try
         {
