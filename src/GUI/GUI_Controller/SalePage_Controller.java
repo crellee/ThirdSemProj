@@ -7,7 +7,10 @@ import Model.Product;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyCode;
@@ -26,6 +29,9 @@ import java.util.ResourceBundle;
 public class SalePage_Controller implements Initializable
 {
     Stage loyalityStage = new Stage();
+
+    @FXML
+    private Button paymentBtn;
 
     @FXML
     private Label totalAmountLbl;
@@ -80,7 +86,6 @@ public class SalePage_Controller implements Initializable
         textField1.setText(Integer.toString(product.getProductId()));
         addToTable(product);
     }
-
 
     public void addToTable(Product product)
     {
@@ -186,6 +191,27 @@ public class SalePage_Controller implements Initializable
         loyalityStage.show();
         */
     }
+
+    public void showEndSale()
+    {
+
+        Main_Controller main_controller = Main_Controller.getInstance();
+        Parent root = null;
+        try
+        {
+            root = FXMLLoader.load(getClass().getResource("/GUI/FXML_EndSale.fxml"));
+        }
+        catch (IOException e)
+        {
+            e.printStackTrace();
+        }
+        Stage homeScreenStage = main_controller.getStage();
+        Scene scene = new Scene(root);
+        homeScreenStage.setScene(scene);
+        main_controller.showStage();
+
+    }
+
 
     public void clearTable()
     {

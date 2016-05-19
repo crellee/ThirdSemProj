@@ -20,6 +20,8 @@ import java.util.ResourceBundle;
  */
 public class EndSale_Controller implements Initializable
 {
+    Stage endSaleStage = new Stage();
+
     @FXML
     private Button cashBtn;
 
@@ -31,6 +33,8 @@ public class EndSale_Controller implements Initializable
 
 
     ObservableList<Product> allProducts = FXCollections.observableArrayList();
+
+    FirstProductTransfer firstProductTransfer = FirstProductTransfer.getInstance();
 
 
     @Override

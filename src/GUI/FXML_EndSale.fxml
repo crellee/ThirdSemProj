@@ -6,7 +6,7 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.GUI_Controller.SalePage_Controller">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.GUI_Controller.EndSale_Controller">
    <center>
       <VBox id="textField" prefHeight="768.0" prefWidth="750.0" spacing="4.0" BorderPane.alignment="CENTER">
          <children>
@@ -15,7 +15,7 @@
                   <Font name="System Bold Italic" size="17.0" />
                </font>
             </Label>
-            <TextField fx:id="textField1" onKeyPressed="#getProductFromDB" />
+            <TextField fx:id="textField1" />
             <Label fx:id="pointLabel" prefHeight="17.0" prefWidth="312.0" />
             <TableView id="saleTable" fx:id="mainTable" prefHeight="668.0" prefWidth="718.0">
                <columns>
@@ -55,7 +55,7 @@
             </HBox>
             <HBox prefHeight="90.0" prefWidth="286.0" spacing="5.0">
                <children>
-                  <Button mnemonicParsing="false" prefHeight="70.0" prefWidth="120.0" styleClass="greenButton" stylesheets="@CSS_HomePage.css" text="Forbrugsforening">
+                  <Button fx:id="fFCardBtn" mnemonicParsing="false" prefHeight="70.0" prefWidth="120.0" styleClass="greenButton" stylesheets="@CSS_HomePage.css" text="Forbrugsforening">
                      <padding>
                         <Insets right="10.0" />
                      </padding>
@@ -111,7 +111,7 @@
                         <Insets right="10.0" />
                      </padding>
                   </Button>
-                  <Button mnemonicParsing="false" onAction="#loyalityButtonShow" prefHeight="70.0" prefWidth="120.0" styleClass="greenButton" stylesheets="@CSS_HomePage.css">
+                  <Button mnemonicParsing="false" prefHeight="70.0" prefWidth="120.0" styleClass="greenButton" stylesheets="@CSS_HomePage.css">
                      <padding>
                         <Insets right="10.0" />
                      </padding>
@@ -141,7 +141,7 @@
             <Separator prefWidth="200.0" />
             <HBox prefHeight="36.0" prefWidth="286.0" spacing="30.0">
                <children>
-                  <Button mnemonicParsing="false" onAction="#clearLine" prefHeight="27.0" prefWidth="86.0" styleClass="yellowButton" stylesheets="@CSS_HomePage.css" text="Slet Linje" />
+                  <Button mnemonicParsing="false" prefHeight="27.0" prefWidth="86.0" styleClass="yellowButton" stylesheets="@CSS_HomePage.css" text="Slet Linje" />
                   <Label prefHeight="27.0" prefWidth="57.0" text="I Alt:" />
                   <Label fx:id="totalAmountLbl" prefHeight="27.0" prefWidth="57.0" text="0,00" />
                </children>
@@ -151,7 +151,7 @@
             </HBox>
             <HBox prefHeight="36.0" prefWidth="286.0" spacing="30.0">
                <children>
-                  <Button fx:id="clearTableButton" mnemonicParsing="false" onAction="#clearTable" prefHeight="27.0" prefWidth="86.0" styleClass="redButton" stylesheets="@CSS_HomePage.css" text="Slet Alt" />
+                  <Button mnemonicParsing="false" prefHeight="27.0" prefWidth="86.0" styleClass="redButton" stylesheets="@CSS_HomePage.css" text="Slet Alt" />
                   <Label prefHeight="27.0" prefWidth="57.0" text="Betalt:" />
                   <Label fx:id="paidAmountLbl" prefHeight="27.0" prefWidth="57.0" text="0,00" />
                </children>
