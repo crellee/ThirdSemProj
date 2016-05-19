@@ -46,9 +46,6 @@ public class SalePage_Controller implements Initializable
     @FXML
     private Label pointLabel;
 
-    @FXML
-    Button loyalityBtn;
-
     static int customerPoints;
 
 

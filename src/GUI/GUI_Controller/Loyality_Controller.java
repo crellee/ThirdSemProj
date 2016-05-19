@@ -2,6 +2,7 @@ package GUI.GUI_Controller;
 
 import Database.EndSale;
 import Model.ImercoCard;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
