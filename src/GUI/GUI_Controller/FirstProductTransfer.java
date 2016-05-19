@@ -11,6 +11,7 @@ public class FirstProductTransfer
 {
     Product product;
 
+
     private static FirstProductTransfer singleton = new FirstProductTransfer( );
 
     /* A private Constructor prevents any other

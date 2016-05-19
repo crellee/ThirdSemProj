@@ -10,7 +10,7 @@ public class DBConnection
 {
     // Username, password, schema name and path to database
     final static String user = "root";
-    final static String pass = "admin";
+    final static String pass = "blaBla";
     final static String db = "Imerco_Project";
     final static String url = "jdbc:mysql://localhost/";
 

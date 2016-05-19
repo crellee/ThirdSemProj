@@ -1,18 +1,189 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.text.*?>
+<?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="250.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
-   <children>
-      <Label text="Afslut Betaling " />
-      <TextField />
-      <HBox prefHeight="100.0" prefWidth="200.0">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.GUI_Controller.SalePage_Controller">
+   <center>
+      <VBox id="textField" prefHeight="768.0" prefWidth="750.0" spacing="4.0" BorderPane.alignment="CENTER">
          <children>
-            <Button mnemonicParsing="false" text="Button" />
+            <Label prefHeight="31.0" prefWidth="292.0" text="Enter product number:">
+               <font>
+                  <Font name="System Bold Italic" size="17.0" />
+               </font>
+            </Label>
+            <TextField fx:id="textField1" onKeyPressed="#getProductFromDB" />
+            <Label fx:id="pointLabel" prefHeight="17.0" prefWidth="312.0" />
+            <TableView id="saleTable" fx:id="mainTable" prefHeight="668.0" prefWidth="718.0">
+               <columns>
+                  <TableColumn fx:id="prodId" prefWidth="95.0" text="Product ID" />
+                  <TableColumn fx:id="productName" prefWidth="119.0" text="ProductName" />
+                  <TableColumn fx:id="desc" prefWidth="119.0" text="Description" />
+                  <TableColumn fx:id="price" prefWidth="95.0" text="Price" />
+                  <TableColumn fx:id="disc" prefWidth="95.0" text="Discount" />
+                  <TableColumn fx:id="amount" prefWidth="95.0" text="Amount" />
+               </columns>
+            </TableView>
          </children>
-      </HBox>
-   </children>
-</VBox>
+         <padding>
+            <Insets left="10.0" />
+         </padding>
+      </VBox>
+   </center>
+   <right>
+      <VBox prefHeight="768.0" prefWidth="306.0" BorderPane.alignment="CENTER">
+         <children>
+            <HBox prefHeight="90.0" prefWidth="286.0" spacing="5.0">
+               <children>
+                  <Button fx:id="cashBtn" mnemonicParsing="false" prefHeight="70.0" prefWidth="120.0" styleClass="greenButton" stylesheets="@CSS_HomePage.css" text="Kontant">
+                     <padding>
+                        <Insets right="10.0" />
+                     </padding>
+                  </Button>
+                  <Button fx:id="cardBtn" mnemonicParsing="false" prefHeight="70.0" prefWidth="120.0" styleClass="greenButton" stylesheets="@CSS_HomePage.css" text="Dankort">
+                     <padding>
+                        <Insets right="10.0" />
+                     </padding>
+                  </Button>
+               </children>
+               <padding>
+                  <Insets left="20.0" top="5.0" />
+               </padding>
+            </HBox>
+            <HBox prefHeight="90.0" prefWidth="286.0" spacing="5.0">
+               <children>
+                  <Button mnemonicParsing="false" prefHeight="70.0" prefWidth="120.0" styleClass="greenButton" stylesheets="@CSS_HomePage.css" text="Forbrugsforening">
+                     <padding>
+                        <Insets right="10.0" />
+                     </padding>
+                  </Button>
+                  <Button mnemonicParsing="false" prefHeight="70.0" prefWidth="120.0" styleClass="greenButton" stylesheets="@CSS_HomePage.css">
+                     <padding>
+                        <Insets right="10.0" />
+                     </padding>
+                  </Button>
+               </children>
+               <padding>
+                  <Insets left="20.0" top="5.0" />
+               </padding>
+            </HBox>
+            <HBox prefHeight="90.0" prefWidth="286.0" spacing="5.0">
+               <children>
+                  <Button mnemonicParsing="false" prefHeight="70.0" prefWidth="120.0" styleClass="greenButton" stylesheets="@CSS_HomePage.css">
+                     <padding>
+                        <Insets right="10.0" />
+                     </padding>
+                  </Button>
+                  <Button mnemonicParsing="false" prefHeight="70.0" prefWidth="120.0" styleClass="greenButton" stylesheets="@CSS_HomePage.css">
+                     <padding>
+                        <Insets right="10.0" />
+                     </padding>
+                  </Button>
+               </children>
+               <padding>
+                  <Insets left="20.0" top="5.0" />
+               </padding>
+            </HBox>
+            <HBox prefHeight="90.0" prefWidth="286.0" spacing="5.0">
+               <children>
+                  <Button mnemonicParsing="false" prefHeight="70.0" prefWidth="120.0" styleClass="greenButton" stylesheets="@CSS_HomePage.css">
+                     <padding>
+                        <Insets right="10.0" />
+                     </padding>
+                  </Button>
+                  <Button mnemonicParsing="false" prefHeight="70.0" prefWidth="120.0" styleClass="greenButton" stylesheets="@CSS_HomePage.css">
+                     <padding>
+                        <Insets right="10.0" />
+                     </padding>
+                  </Button>
+               </children>
+               <padding>
+                  <Insets left="20.0" top="5.0" />
+               </padding>
+            </HBox>
+            <HBox prefHeight="90.0" prefWidth="286.0" spacing="5.0">
+               <children>
+                  <Button mnemonicParsing="false" prefHeight="70.0" prefWidth="120.0" styleClass="greenButton" stylesheets="@CSS_HomePage.css" text="Loyalitetspoint">
+                     <padding>
+                        <Insets right="10.0" />
+                     </padding>
+                  </Button>
+                  <Button mnemonicParsing="false" onAction="#loyalityButtonShow" prefHeight="70.0" prefWidth="120.0" styleClass="greenButton" stylesheets="@CSS_HomePage.css">
+                     <padding>
+                        <Insets right="10.0" />
+                     </padding>
+                  </Button>
+               </children>
+               <padding>
+                  <Insets left="20.0" top="5.0" />
+               </padding>
+            </HBox>
+            <HBox prefHeight="90.0" prefWidth="286.0" spacing="5.0">
+               <children>
+                  <Button mnemonicParsing="false" prefHeight="70.0" prefWidth="120.0" styleClass="redButton" stylesheets="@CSS_HomePage.css" text="Tilbage">
+                     <padding>
+                        <Insets right="10.0" />
+                     </padding>
+                  </Button>
+                  <Button mnemonicParsing="false" prefHeight="70.0" prefWidth="120.0" styleClass="greenButton" stylesheets="@CSS_HomePage.css">
+                     <padding>
+                        <Insets right="10.0" />
+                     </padding>
+                  </Button>
+               </children>
+               <padding>
+                  <Insets left="20.0" top="5.0" />
+               </padding>
+            </HBox>
+            <Separator prefWidth="200.0" />
+            <HBox prefHeight="36.0" prefWidth="286.0" spacing="30.0">
+               <children>
+                  <Button mnemonicParsing="false" onAction="#clearLine" prefHeight="27.0" prefWidth="86.0" styleClass="yellowButton" stylesheets="@CSS_HomePage.css" text="Slet Linje" />
+                  <Label prefHeight="27.0" prefWidth="57.0" text="I Alt:" />
+                  <Label fx:id="totalAmountLbl" prefHeight="27.0" prefWidth="57.0" text="0,00" />
+               </children>
+               <padding>
+                  <Insets left="20.0" />
+               </padding>
+            </HBox>
+            <HBox prefHeight="36.0" prefWidth="286.0" spacing="30.0">
+               <children>
+                  <Button fx:id="clearTableButton" mnemonicParsing="false" onAction="#clearTable" prefHeight="27.0" prefWidth="86.0" styleClass="redButton" stylesheets="@CSS_HomePage.css" text="Slet Alt" />
+                  <Label prefHeight="27.0" prefWidth="57.0" text="Betalt:" />
+                  <Label fx:id="paidAmountLbl" prefHeight="27.0" prefWidth="57.0" text="0,00" />
+               </children>
+               <padding>
+                  <Insets left="20.0" />
+               </padding>
+            </HBox>
+            <HBox prefHeight="36.0" prefWidth="286.0" spacing="30.0">
+               <children>
+                  <Button mnemonicParsing="false" prefHeight="27.0" prefWidth="86.0" styleClass="greenButton" stylesheets="@CSS_HomePage.css" text="Parker Bon" />
+                  <Label prefHeight="27.0" prefWidth="57.0" text="Skyldig:" />
+                  <Label fx:id="toOweLbl" prefHeight="27.0" prefWidth="57.0" text="0,00" />
+               </children>
+               <padding>
+                  <Insets left="20.0" />
+               </padding>
+            </HBox>
+            <HBox prefHeight="36.0" prefWidth="286.0" spacing="30.0">
+               <children>
+                  <Label prefHeight="27.0" prefWidth="86.0" />
+                  <Label prefHeight="27.0" prefWidth="57.0" text="Rabat:" />
+                  <Label fx:id="discountLbl" prefHeight="27.0" prefWidth="57.0" text="0,00" />
+               </children>
+               <padding>
+                  <Insets left="20.0" />
+               </padding>
+            </HBox>
+            <Separator prefWidth="200.0" />
+         </children>
+         <padding>
+            <Insets bottom="5.0" left="10.0" right="10.0" />
+         </padding>
+      </VBox>
+   </right>
+</BorderPane>

@@ -96,7 +96,7 @@ public class HomePage_Controller implements Initializable
             ResultSet rs = ProductVerifier.tableShow(textField1);
             while (rs.next())
             {
-                Model.Product product = new Model.Product();
+                Product product = new Product();
 
                 product.setProductId(rs.getInt("productId"));
                 product.setName(rs.getString("productName"));

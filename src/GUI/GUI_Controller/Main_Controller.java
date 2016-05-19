@@ -15,13 +15,15 @@ public class Main_Controller
     private Main_Controller(){ }
 
     /* Static 'instance' method */
-    public static Main_Controller getInstance( ) {
+    public static Main_Controller getInstance( )
+    {
         return singleton;
     }
 
     Stage thisStage;
 
-    public void setStage (Stage stage){
+    public void setStage (Stage stage)
+    {
         thisStage = stage;
     }
 
