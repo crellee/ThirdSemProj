@@ -45,10 +45,10 @@ public class CreateCustomer
             ResultSet rs;
 
 
-            String sqlString = ("SELECT CustomerId FROM Customer WHERE email = '" + emailStr + "' ");
+            String sqlString = ("SELECT * FROM Customer WHERE email = '" + emailStr + "' ");
             rs = stmt.executeQuery(sqlString);
 
-            id = rs.getInt("CustomerId");
+            id = rs.getInt("customerId");
 
 
         } catch (Exception e) {
