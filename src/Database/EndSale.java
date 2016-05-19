@@ -24,7 +24,6 @@ public class EndSale
     public static void createReciept(TextField imercoCardID, String paymentTypeId)
     {
 
-
         //sets i dags dato
         Calendar c = new GregorianCalendar();
         c.set(Calendar.HOUR_OF_DAY, 0); //anything 0 - 23
@@ -73,7 +72,6 @@ public class EndSale
 
     public static boolean verifyImercoCard(TextField textField)
     {
-
         boolean verified = false;
         imercoCardId = Integer.parseInt(textField.getText());
 
@@ -111,8 +109,6 @@ public class EndSale
     {
         return imercoCardId;
     }
-
-
 
         public static ResultSet getImercoPoints()
         {
