@@ -11,56 +11,71 @@ import java.sql.Statement;
  */
 public class CreateCustomer
 {
-    public static boolean createCustomer(TextField fname, TextField lname, TextField email, TextField zip)
-    {
+    static TextField emailField;
+
+    public static boolean createCustomer(TextField fname, TextField lname, TextField email, TextField zip) {
         String fnameStr = fname.getText().toString();
         String lnameStr = lname.getText().toString();
         String emailStr = email.getText().toString();
         int zipInt = Integer.parseInt(zip.getText().toString());
         boolean succesfull = false;
 
-        try
-        {
+        try {
             Connection conn = DBConnection.getConnection();
             Statement stmt = conn.createStatement();
 
             String sqlString = ("INSERT INTO Customer (customerFirstName, customerLastName, email, zipCode) " +
-                    "VALUES ('"+fnameStr+"' , '"+lnameStr+"' , '"+emailStr+"' , '"+zipInt+"'  ) ");
+                    "VALUES ('" + fnameStr + "' , '" + lnameStr + "' , '" + emailStr + "' , '" + zipInt + "'  ) ");
             stmt.executeUpdate(sqlString);
             succesfull = true;
+            emailField = email;
 
-        }
-        catch (Exception e)
-        {
+        } catch (Exception e) {
 
         }
         return succesfull;
     }
 
-    public static int getCustomerId(TextField email)
-    {
+    public static int getCustomerId(TextField email) {
         int id = 0;
         String emailStr = email.getText().toString();
-        try
-        {
+        try {
             Connection conn = DBConnection.getConnection();
             Statement stmt = conn.createStatement();
             ResultSet rs;
 
 
-            String sqlString = ("SELECT CustomerId FROM Customer WHERE email = '"+emailStr+"' ");
+            String sqlString = ("SELECT CustomerId FROM Customer WHERE email = '" + emailStr + "' ");
             rs = stmt.executeQuery(sqlString);
 
             id = rs.getInt("CustomerId");
 
 
-
-        }
-        catch (Exception e)
-        {
+        } catch (Exception e) {
 
         }
         return id;
+    }
+
+    public static void createImercoCard(TextField imercoCard)
+    {
+        int imercoCardInt = Integer.parseInt(imercoCard.getText().toString());
+        int imercoPoints = 0;
+        int customerId = getCustomerId(emailField);
+
+
+        try
+        {
+            Connection conn = DBConnection.getConnection();
+            Statement stmt = conn.createStatement();
+
+            String sqlString = ("INSERT INTO ImercoCard (imercoCardId, customerId, point) " +
+                    "VALUES ('" + imercoCardInt + "' , '" + customerId + "' , '" + imercoPoints + "'  ) ");
+            stmt.execute(sqlString);
+        }
+        catch (Exception e)
+        {
+        }
     }
 
 }
