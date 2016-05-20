@@ -1,6 +1,7 @@
 package GUI.GUI_Controller;
 
 import Model.Product;
+import javafx.collections.ObservableList;
 
 /**
  * Created by roije on 13/05/2016.
@@ -10,6 +11,7 @@ import Model.Product;
 public class ProductGUI_Intermediary
 {
     Product product;
+    ObservableList<Product> allProducts;
 
 
     private static ProductGUI_Intermediary singleton = new ProductGUI_Intermediary( );
@@ -35,5 +37,13 @@ public class ProductGUI_Intermediary
         {
             this.product = product;
         }
+    }
+
+    public ObservableList<Product> getAllProducts() {
+        return allProducts;
+    }
+
+    public void setAllProducts(ObservableList<Product> allProducts) {
+        this.allProducts = allProducts;
     }
 }

@@ -1,5 +1,6 @@
 package GUI.GUI_Controller;
 
+import Algorithm.Calculator;
 import Database.ProductVerifier;
 import Model.Product;
 import javafx.collections.FXCollections;
@@ -52,8 +53,6 @@ public class SalePage_Controller implements Initializable
 
     static int customerPoints;
 
-
-
     @FXML
     private TextField textField1;
     @FXML
@@ -74,6 +73,8 @@ public class SalePage_Controller implements Initializable
     ObservableList<Product> allProducts = FXCollections.observableArrayList();
 
     ProductGUI_Intermediary productGUIIntermediary = ProductGUI_Intermediary.getInstance();
+
+    Calculator calculator = new Calculator();
 
     @Override
     public void initialize(URL location, ResourceBundle resources)
@@ -109,11 +110,17 @@ public class SalePage_Controller implements Initializable
         allProducts.addAll(product);
         mainTable.setItems(allProducts);
 
-        updateTotalAmount();
-        updatePaidAmount();
-        updateToOwe();
-        updateDiscount();
+        double totalAmount = calculator.updateTotalAmount(allProducts);
+        totalAmountLbl.setText(Double.toString(totalAmount));
 
+        int discountAmount = calculator.updateDiscount(allProducts);
+        discountLbl.setText(Integer.toString(discountAmount));
+
+        double toOweAmount = calculator.updateToOwe(allProducts);
+        toOweLbl.setText(Double.toString(toOweAmount));
+
+        double paidAmount = calculator.updatePaidAmount();
+        paidAmountLbl.setText(Double.toString(paidAmount));
     }
 
     @FXML
@@ -144,40 +151,6 @@ public class SalePage_Controller implements Initializable
         }
     }
 
-    public void updateTotalAmount()
-    {
-        totalAmountDoub = 0;
-        for (int i = 0; i < allProducts.size(); i++)
-        {
-            totalAmountDoub += allProducts.get(i).getPrice() * allProducts.get(i).getAmount();
-        }
-
-        String doubleToString = Double.toString(totalAmountDoub);
-        totalAmountLbl.setText(doubleToString);
-    }
-
-    public void updatePaidAmount()
-    {
-        paidAmountDoub = 0;
-        String doubleToString = Double.toString(paidAmountDoub);
-        paidAmountLbl.setText(doubleToString);
-    }
-
-    public void updateToOwe()
-    {
-        toOweDoub = 0;
-        toOweDoub = totalAmountDoub - paidAmountDoub;
-        String doubleToString = Double.toString(toOweDoub);
-        toOweLbl.setText(doubleToString);
-    }
-
-    public void updateDiscount()
-    {
-        discountInt = 0;
-        String intToString = Integer.toString(discountInt);
-        discountLbl.setText(intToString);
-    }
-
     public void loyalityButtonShow() throws IOException
     {
         Loyality_Controller loyality_controller = new Loyality_Controller();
@@ -192,7 +165,7 @@ public class SalePage_Controller implements Initializable
 
     public void showEndSale()
     {
-
+        productGUIIntermediary.setAllProducts(allProducts);
         Main_Controller main_controller = Main_Controller.getInstance();
         Parent root = null;
         try
@@ -207,7 +180,6 @@ public class SalePage_Controller implements Initializable
         Scene scene = new Scene(root);
         homeScreenStage.setScene(scene);
         main_controller.showStage();
-
     }
 
 
@@ -216,10 +188,17 @@ public class SalePage_Controller implements Initializable
         allProducts.clear();
         mainTable.setItems(allProducts);
 
-        updateTotalAmount();
-        updatePaidAmount();
-        updateToOwe();
-        updateDiscount();
+        double totalAmount = calculator.updateTotalAmount(allProducts);
+        totalAmountLbl.setText(Double.toString(totalAmount));
+
+        int discountAmount = calculator.updateDiscount(allProducts);
+        discountLbl.setText(Integer.toString(discountAmount));
+
+        double toOweAmount = calculator.updateToOwe(allProducts);
+        toOweLbl.setText(Double.toString(toOweAmount));
+
+        double paidAmount = calculator.updatePaidAmount();
+        paidAmountLbl.setText(Double.toString(paidAmount));
     }
 
     public void clearLine()
@@ -236,9 +215,16 @@ public class SalePage_Controller implements Initializable
         }
         mainTable.setItems(allProducts);
 
-        updateTotalAmount();
-        updatePaidAmount();
-        updateToOwe();
-        updateDiscount();
+        double totalAmount = calculator.updateTotalAmount(allProducts);
+        totalAmountLbl.setText(Double.toString(totalAmount));
+
+        int discountAmount = calculator.updateDiscount(allProducts);
+        discountLbl.setText(Integer.toString(discountAmount));
+
+        double toOweAmount = calculator.updateToOwe(allProducts);
+        toOweLbl.setText(Double.toString(toOweAmount));
+
+        double paidAmount = calculator.updatePaidAmount();
+        paidAmountLbl.setText(Double.toString(paidAmount));
     }
 }
