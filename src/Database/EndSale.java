@@ -21,6 +21,7 @@ public class EndSale
     static int saltIdInt = ran.nextInt(10000);
     static int imercoCardId;
 
+    /*
     public static void createReciept(TextField imercoCardID, String paymentTypeId)
     {
 
@@ -52,7 +53,9 @@ public class EndSale
 
         }
     }
+    */
 
+    /*
     public void createSales(int productId, int amountOfProd)
     {
         try
@@ -69,6 +72,7 @@ public class EndSale
 
         }
     }
+    */
 
     public static boolean verifyImercoCard(TextField textField)
     {

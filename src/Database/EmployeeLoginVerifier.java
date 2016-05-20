@@ -13,7 +13,7 @@ import java.sql.Statement;
  */
 public class EmployeeLoginVerifier
 {
-    static String email;
+    static int employeeNumber;
 
     public boolean verifyUser (TextField empNumField)
     {
@@ -35,7 +35,7 @@ public class EmployeeLoginVerifier
                 if(rs.next())
                 {
                     verified = true;
-                    setEmail(empNumField);
+                    setEmployeeNumber(empNumField);
                 }
             }
 
@@ -48,16 +48,15 @@ public class EmployeeLoginVerifier
 
     }
 
-    //Set email variable to email in GUI TextField. Used when user is logging in to get the right user.
-    public static void setEmail(TextField emailFromGui)
+    public static void setEmployeeNumber(TextField emailFromGui)
     {
         String emailStr = emailFromGui.getText();
-        email = emailStr;
+        employeeNumber = Integer.parseInt(emailStr);
     }
 
-    public static String getEmail()
+    public static int getEmployeeNumber()
     {
-        return email;
+        return employeeNumber;
     }
 
 }

@@ -32,13 +32,15 @@ public class ReceiptTable
             stmt = conn.createStatement();
 
             sqlString = "CREATE TABLE IF NOT EXISTS Receipts " +
-                    "(receiptId INTEGER(10) NOT NULL, " +
+                    "(receiptId INTEGER(10) NOT NULL AUTO_INCREMENT, " +
+                    "saleId INTEGER(10) NOT NULL, " +
                     "employeeId INTEGER(3) NOT NULL, " +
                     "imercoCardId INTEGER(10) NOT NULL, " +
                     "dateIssued VARCHAR (10), " +
                     "paymentType VARCHAR (20), " +
                     "FOREIGN KEY (employeeId) REFERENCES Employee(employeeId), " +
                     "FOREIGN KEY (imercoCardId) REFERENCES ImercoCard(imercoCardId), " +
+                    "FOREIGN KEY (saleId) REFERENCES Sales(saleId), " +
                     "PRIMARY KEY (receiptId))";
 
             stmt.executeUpdate(sqlString);

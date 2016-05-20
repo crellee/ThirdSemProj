@@ -1,6 +1,9 @@
 package GUI.GUI_Controller;
 
 import Algorithm.Calculator;
+import Database.EmployeeLoginVerifier;
+import Database.EndSale;
+import Database.ReceiptGenerator;
 import Model.Product;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -107,5 +110,13 @@ public class EndSale_Controller implements Initializable
         Scene scene = new Scene(root);
         endSale.setScene(scene);
         endSale.show();
+    }
+
+    public void doneDeal()
+    {
+        ReceiptGenerator receiptGenerator = new ReceiptGenerator();
+        receiptGenerator.generateSale(allProducts);
+        System.out.println("Empnum: " + EmployeeLoginVerifier.getEmployeeNumber() + "Imerconum: " + EndSale.getImercoCard());
+        receiptGenerator.generateReceipt(cashBtn, EmployeeLoginVerifier.getEmployeeNumber(), EndSale.getImercoCard());
     }
 }

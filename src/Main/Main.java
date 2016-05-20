@@ -40,8 +40,8 @@ public class Main extends Application
         ProductsTable.getInstance().createTable();
         CustomerTable.getInstance().createTable();
         ImercoCardTable.getInstance().createTable();
-        ReceiptTable.getInstance().createTable();
         SalesTable.getInstance().createTable();
+        ReceiptTable.getInstance().createTable();
 
         /*
             REMEMBER TO COMMENT DUMMIE INFO

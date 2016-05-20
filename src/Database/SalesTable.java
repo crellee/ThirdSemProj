@@ -30,13 +30,11 @@ public class SalesTable
             stmt = conn.createStatement();
 
             sqlString = "CREATE TABLE IF NOT EXISTS Sales " +
-                    "(saleId INT(10) NOT NULL, " +
+                    "(saleId INTEGER(10) NOT NULL, " +
                     "productId INT(10) NOT NULL, " +
-                    "receiptId INT(10) NOT NULL, " +
                     "ammountOfProducts INT(4) NOT NULL, " +
                     "FOREIGN KEY (productId) REFERENCES Products(productId), " +
-                    "FOREIGN KEY (receiptId) REFERENCES Receipts(receiptId), " +
-                    "PRIMARY KEY (saleId, productId, receiptId))";
+                    "PRIMARY KEY (saleId, productId))";
 
             stmt.executeUpdate(sqlString);
         }

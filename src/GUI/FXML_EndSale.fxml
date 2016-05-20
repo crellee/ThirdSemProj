@@ -38,7 +38,7 @@
          <children>
             <HBox prefHeight="90.0" prefWidth="286.0" spacing="5.0">
                <children>
-                  <Button fx:id="cashBtn" mnemonicParsing="false" prefHeight="70.0" prefWidth="120.0" styleClass="greenButton" stylesheets="@CSS_HomePage.css" text="Kontant">
+                  <Button fx:id="cashBtn" mnemonicParsing="false" onAction="#doneDeal" prefHeight="70.0" prefWidth="120.0" styleClass="greenButton" stylesheets="@CSS_HomePage.css" text="Kontant">
                      <padding>
                         <Insets right="10.0" />
                      </padding>
