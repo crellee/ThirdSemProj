@@ -44,7 +44,6 @@ public class CreateCustomer
             Statement stmt = conn.createStatement();
             ResultSet rs;
 
-
             String sqlString = ("SELECT * FROM Customer WHERE email = '" + emailStr + "' ");
             rs = stmt.executeQuery(sqlString);
 

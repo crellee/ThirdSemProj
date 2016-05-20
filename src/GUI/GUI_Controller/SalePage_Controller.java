@@ -1,8 +1,6 @@
 package GUI.GUI_Controller;
 
-import Database.EndSale;
 import Database.ProductVerifier;
-import Model.ImercoCard;
 import Model.Product;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -75,14 +73,14 @@ public class SalePage_Controller implements Initializable
 
     ObservableList<Product> allProducts = FXCollections.observableArrayList();
 
-    FirstProductTransfer firstProductTransfer = FirstProductTransfer.getInstance();
+    ProductGUI_Intermediary productGUIIntermediary = ProductGUI_Intermediary.getInstance();
 
     @Override
     public void initialize(URL location, ResourceBundle resources)
     {
         //When this window opens, we get the first product which was set my HomePage_Controller and add product
         //to the TableView
-        Product product = firstProductTransfer.getFirstProduct();
+        Product product = productGUIIntermediary.getFirstProduct();
         textField1.setText(Integer.toString(product.getProductId()));
         addToTable(product);
     }

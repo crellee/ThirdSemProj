@@ -7,20 +7,20 @@ import Model.Product;
  * This method used as a intermediary between HomePage_Controller and SalePage_Controller to get the first
  * product, which is transfered from HomePage_Controller textfield to SalePage_Controller textfield.
  */
-public class FirstProductTransfer
+public class ProductGUI_Intermediary
 {
     Product product;
 
 
-    private static FirstProductTransfer singleton = new FirstProductTransfer( );
+    private static ProductGUI_Intermediary singleton = new ProductGUI_Intermediary( );
 
     /* A private Constructor prevents any other
      * class from instantiating.
      */
-    private FirstProductTransfer(){ }
+    private ProductGUI_Intermediary(){ }
 
     /* Static 'instance' method */
-    public static FirstProductTransfer getInstance( ) {
+    public static ProductGUI_Intermediary getInstance( ) {
         return singleton;
     }
 

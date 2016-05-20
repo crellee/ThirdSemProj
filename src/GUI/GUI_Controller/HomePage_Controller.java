@@ -56,10 +56,10 @@ public class HomePage_Controller implements Initializable
     @FXML
     TableView<Model.Product> mainTable;
 
-    //Instance of FirstProductTransfer class.
+    //Instance of ProductGUI_Intermediary class.
     //This is necessary for getting the first product in the textfield from this controller (HomePage_Controller)
     //into SalePage_Controller, where we will use it, to set into the TableView.
-    private FirstProductTransfer firstProductTransfer = FirstProductTransfer.getInstance();
+    private ProductGUI_Intermediary productGUIIntermediary = ProductGUI_Intermediary.getInstance();
 
 
     @Override
@@ -71,7 +71,7 @@ public class HomePage_Controller implements Initializable
     public void toSalePage()
     {
         Product product = getFirstProductFromDB();
-        firstProductTransfer.setFirstProduct(product);
+        productGUIIntermediary.setFirstProduct(product);
 
         Main_Controller main_controller = Main_Controller.getInstance();
         Parent root = null;

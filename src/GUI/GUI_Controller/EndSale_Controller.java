@@ -34,7 +34,7 @@ public class EndSale_Controller implements Initializable
 
     ObservableList<Product> allProducts = FXCollections.observableArrayList();
 
-    FirstProductTransfer firstProductTransfer = FirstProductTransfer.getInstance();
+    ProductGUI_Intermediary productGUIIntermediary = ProductGUI_Intermediary.getInstance();
 
 
     @Override
