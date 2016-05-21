@@ -5,9 +5,11 @@ package Algorithm;
  */
 public class PointCounter
 {
-    public void countPoints(int amount)
+    public static int countPoints(int amount)
     {
         amount = amount / 20;
         System.out.println("Total points: " + amount);
+        System.out.println(amount);
+        return amount;
     }
 }

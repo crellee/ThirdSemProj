@@ -118,5 +118,19 @@ public class EndSale_Controller implements Initializable
         receiptGenerator.generateSale(allProducts);
         System.out.println("Empnum: " + EmployeeLoginVerifier.getEmployeeNumber() + "Imerconum: " + EndSale.getImercoCard());
         receiptGenerator.generateReceipt(cashBtn, EmployeeLoginVerifier.getEmployeeNumber(), EndSale.getImercoCard());
+        updateImercoPoints();
     }
+
+    public int updateImercoPoints()
+    {
+        double totalAmount = calculator.updateTotalAmount(allProducts);
+
+
+        int total = Algorithm.PointCounter.countPoints((int) totalAmount);
+
+        EndSale.updateImercoPoints(total);
+
+        return total;
+    }
+
 }

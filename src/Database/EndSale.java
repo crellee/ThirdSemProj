@@ -1,5 +1,6 @@
 package Database;
 
+import Model.ImercoCard;
 import javafx.scene.control.TextField;
 
 import java.sql.Connection;
@@ -134,4 +135,39 @@ public class EndSale
         }
 
 
+    public static void updateImercoPoints(int newPoints)
+    {
+
+        int points = 0;
+        try
+        {
+            ResultSet rs = EndSale.getImercoPoints();
+            while (rs.next())
+            {
+                ImercoCard imercoCard = new ImercoCard();
+                points = imercoCard.setActivePoints(rs.getInt("point"));
+            }
+        }
+        catch (SQLException e)
+        {
+            e.printStackTrace();
+        }
+        points = points + newPoints;
+
+        try
+        {
+            Connection conn = DBConnection.getConnection();
+            Statement stmt = conn.createStatement();
+
+            String sqlString = "UPDATE Imerco_Project.ImercoCard " +
+                    "SET point = '"+points+"' where imercoCardId = '"+imercoCardId+"' ";
+            stmt.execute(sqlString);
+        }
+        catch (Exception e)
+        {
+
+        }
+
+    }
 }
+
