@@ -35,7 +35,7 @@ public class ReceiptTable
                     "(receiptId INTEGER(10) NOT NULL AUTO_INCREMENT, " +
                     "saleId INTEGER(10) NOT NULL, " +
                     "employeeId INTEGER(3) NOT NULL, " +
-                    "imercoCardId INTEGER(10) NOT NULL, " +
+                    "imercoCardId INTEGER(10), " +
                     "dateIssued VARCHAR (10), " +
                     "paymentType VARCHAR (20), " +
                     "FOREIGN KEY (employeeId) REFERENCES Employee(employeeId), " +

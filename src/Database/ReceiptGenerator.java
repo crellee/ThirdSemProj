@@ -86,13 +86,25 @@ public class ReceiptGenerator
 
         String paymentType = buttonSrc.getText();
 
+
+
         try
         {
             Connection conn = DBConnection.getConnection();
             Statement stmt = conn.createStatement();
 
-            String sqlString = ("INSERT INTO Receipts (saleId, employeeId, imercoCardId, dateIssued, paymentType) " +
-                    "VALUES ('" + this.saledId + "' , '" + employeeId + "' , '" + imercoCardNum +"', '"+test+"', '"+paymentType+"')");
+            String sqlString;
+
+            if(imercoCardNum == 0)
+            {
+                sqlString = ("INSERT INTO Receipts (saleId, employeeId, dateIssued, paymentType) " +
+                        "VALUES ('" + this.saledId + "' , '" + employeeId + "' , '"+test+"', '"+paymentType+"')");
+            }
+            else
+            {
+                sqlString = ("INSERT INTO Receipts (saleId, employeeId, imercoCardId, dateIssued, paymentType) " +
+                        "VALUES ('" + this.saledId + "' , '" + employeeId + "' , '" + imercoCardNum + "', '" + test + "', '" + paymentType + "')");
+            }
             stmt.executeUpdate(sqlString);
 
         } catch (Exception e) {
