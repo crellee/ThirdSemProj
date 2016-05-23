@@ -115,4 +115,12 @@ public class HomePage_Controller implements Initializable
         return null;
 
     }
+
+    public void openReturnWindow() throws IOException {
+        Stage stage = new Stage();
+        Parent root = FXMLLoader.load(getClass().getResource("/GUI/FXML_EnterReceiptId.fxml"));
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
 }

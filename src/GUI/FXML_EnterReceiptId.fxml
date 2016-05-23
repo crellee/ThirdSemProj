@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="157.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.GUI_Controller.EnterReceiptId_Controller">
+   <center>
+      <VBox prefHeight="232.0" prefWidth="600.0" BorderPane.alignment="CENTER">
+         <children>
+            <Label prefHeight="26.0" prefWidth="279.0" text="Insert Receipt Number:">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <TextField fx:id="receiptIdField" />
+            <Label fx:id="validLbl" prefHeight="17.0" prefWidth="213.0" />
+            <HBox alignment="TOP_RIGHT" prefHeight="122.0" prefWidth="647.0">
+               <children>
+                  <Button id="okButton" fx:id="okButton" mnemonicParsing="false" onAction="#getReceiptContent" prefHeight="27.0" prefWidth="92.0" text="OK">
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                     <HBox.margin>
+                        <Insets left="160.0" />
+                     </HBox.margin>
+                  </Button>
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+   </center>
+</BorderPane>

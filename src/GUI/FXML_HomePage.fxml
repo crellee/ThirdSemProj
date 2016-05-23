@@ -42,7 +42,7 @@
                         <Insets right="10.0" />
                      </padding>
                   </Button>
-                  <Button mnemonicParsing="false" prefHeight="70.0" prefWidth="120.0" styleClass="orangeButton" stylesheets="@CSS_HomePage.css" text="Returner Vare">
+                  <Button mnemonicParsing="false" onAction="#openReturnWindow" prefHeight="70.0" prefWidth="120.0" styleClass="orangeButton" stylesheets="@CSS_HomePage.css" text="Returner Vare">
                      <padding>
                         <Insets right="10.0" />
                      </padding>
