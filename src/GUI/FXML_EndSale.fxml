@@ -43,7 +43,7 @@
                         <Insets right="10.0" />
                      </padding>
                   </Button>
-                  <Button fx:id="cardBtn" mnemonicParsing="false" prefHeight="70.0" prefWidth="120.0" styleClass="greenButton" stylesheets="@CSS_HomePage.css" text="Dankort">
+                  <Button fx:id="cardBtn" mnemonicParsing="false" onAction="#doneDeal" prefHeight="70.0" prefWidth="120.0" styleClass="greenButton" stylesheets="@CSS_HomePage.css" text="Dankort">
                      <padding>
                         <Insets right="10.0" />
                      </padding>
@@ -55,7 +55,7 @@
             </HBox>
             <HBox prefHeight="90.0" prefWidth="286.0" spacing="5.0">
                <children>
-                  <Button fx:id="fFCardBtn" mnemonicParsing="false" prefHeight="70.0" prefWidth="120.0" styleClass="greenButton" stylesheets="@CSS_HomePage.css" text="Forbrugsforening">
+                  <Button fx:id="fFCardBtn" mnemonicParsing="false" onAction="#doneDeal" prefHeight="70.0" prefWidth="120.0" styleClass="greenButton" stylesheets="@CSS_HomePage.css" text="Forbrugsforening">
                      <padding>
                         <Insets right="10.0" />
                      </padding>

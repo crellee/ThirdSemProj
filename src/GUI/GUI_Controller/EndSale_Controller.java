@@ -7,6 +7,7 @@ import Database.ReceiptGenerator;
 import Model.Product;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -112,13 +113,23 @@ public class EndSale_Controller implements Initializable
         endSale.show();
     }
 
-    public void doneDeal()
+    public void doneDeal(ActionEvent event)
     {
+        Button clickedBtn = null;
+        Object source = event.getSource();
+        if (source instanceof Button)
+        { //should always be true in your example
+            clickedBtn = (Button) source; // that's the button that was clicked
+        }
+
         ReceiptGenerator receiptGenerator = new ReceiptGenerator();
         receiptGenerator.generateSale(allProducts);
-        System.out.println("Empnum: " + EmployeeLoginVerifier.getEmployeeNumber() + "Imerconum: " + EndSale.getImercoCard());
-        receiptGenerator.generateReceipt(cashBtn, EmployeeLoginVerifier.getEmployeeNumber(), EndSale.getImercoCard());
-        updateImercoPoints();
+        receiptGenerator.generateReceipt(clickedBtn, EmployeeLoginVerifier.getEmployeeNumber(), EndSale.getImercoCard());
+        if (!clickedBtn.getText().equals("Forbrugsforening"))
+        {
+            updateImercoPoints();
+        }
+
     }
 
     public int updateImercoPoints()
