@@ -12,31 +12,63 @@ import java.sql.Statement;
  */
 public class Return
 {
-    public static boolean findReceipt(TextField receiptId)
-    {
+    static int receiptIdstat;
+
+    public static boolean findReceipt(TextField receiptId) {
         boolean verified = false;
         int receiptIdInt = Integer.parseInt(receiptId.getText());
+        receiptIdstat = receiptIdInt;
 
         try {
             Connection conn = DBConnection.getConnection();
             Statement stmt = conn.createStatement();
             ResultSet rs;
 
-            if (receiptId != null)
-            {
+            if (receiptId != null) {
                 String sqlString = "SELECT * FROM Receipts WHERE receiptId = '" + receiptIdInt + "'";
                 rs = stmt.executeQuery(sqlString);
 
-                if (rs.next())
-                {
+                if (rs.next()) {
                     verified = true;
                 }
             }
 
-        } catch (SQLException e)
-        {
+        } catch (SQLException e) {
 
         }
         return verified;
     }
+
+    public static ResultSet toFillTable()
+    {
+        ResultSet rs = null;
+        try
+        {
+            Connection conn = DBConnection.getConnection();
+            Statement stmt = conn.createStatement();
+
+            String sqlString = "select * from Imerco_Project.Products as p1 " +
+                    "inner join (select * from Imerco_Project.Sales) as s1 " +
+                    "inner join Imerco_Project.Receipts as r1 " +
+                    "where r1.receiptId = '"+receiptIdstat+"' " +
+                    "and r1.saleId = s1.saleId " +
+                    "and s1.productId = p1.productId";
+            rs = stmt.executeQuery(sqlString);
+
+        }
+        catch (SQLException e)
+        {
+
+        }
+        return rs;
+    }
+    /*
+    select * from Imerco_Project.Products as p1
+inner join (select * from Imerco_Project.Sales) as s1
+inner join Imerco_Project.Receipts as r1
+where r1.receiptId = 6
+and r1.saleId = s1.saleId
+and s1.productId = p1.productId
+
+     */
 }

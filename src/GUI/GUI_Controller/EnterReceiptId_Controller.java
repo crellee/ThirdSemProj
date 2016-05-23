@@ -2,6 +2,7 @@ package GUI.GUI_Controller;
 
 import Database.CreateCustomer;
 import Database.Return;
+import Model.Receipt;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -53,7 +54,6 @@ public class EnterReceiptId_Controller implements Initializable
             Scene scene = new Scene(root);
             stage2.setScene(scene);
             stage2.show();
-
         }
     }
 

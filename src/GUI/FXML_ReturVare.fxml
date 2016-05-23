@@ -5,17 +5,15 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="437.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="437.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.GUI_Controller.ReturVare_Controller">
    <center>
       <HBox prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
-            <TableView prefHeight="400.0" prefWidth="500.0">
+            <TableView fx:id="mainTable" prefHeight="400.0" prefWidth="500.0">
               <columns>
-                <TableColumn prefWidth="82.0" text="Product ID" />
-                <TableColumn prefWidth="112.0" text="Product Name" />
-                  <TableColumn prefWidth="82.0" text="Price" />
-                  <TableColumn prefWidth="82.0" text="Amount" />
+                <TableColumn fx:id="productIdCol" prefWidth="115.0" text="Product ID" />
+                <TableColumn fx:id="productNameCol" prefWidth="203.0" text="Product Name" />
+                  <TableColumn fx:id="priceCol" prefWidth="181.0" text="Price" />
               </columns>
             </TableView>
             <VBox prefHeight="200.0" prefWidth="100.0" spacing="3.0">
