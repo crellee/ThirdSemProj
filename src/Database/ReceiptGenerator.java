@@ -9,6 +9,7 @@ import javafx.scene.control.Button;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
@@ -76,13 +77,8 @@ public class ReceiptGenerator
     public void generateReceipt(Button buttonSrc, int employeeId, int imercoCardNum)
     {
         //sets i dags dato
-        Calendar c = new GregorianCalendar();
-        c.set(Calendar.HOUR_OF_DAY, 0); //anything 0 - 23
-        c.set(Calendar.MINUTE, 0);
-        c.set(Calendar.SECOND, 0);
-        Date d1 = c.getTime();
-        String dateStr = d1.toString();
-        String test = "test";
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/M/yyyy");
+        String date = sdf.format(new Date());
 
         String paymentType = buttonSrc.getText();
 
@@ -98,12 +94,12 @@ public class ReceiptGenerator
             if(imercoCardNum == 0)
             {
                 sqlString = ("INSERT INTO Receipts (saleId, employeeId, dateIssued, paymentType) " +
-                        "VALUES ('" + this.saledId + "' , '" + employeeId + "' , '"+test+"', '"+paymentType+"')");
+                        "VALUES ('" + this.saledId + "' , '" + employeeId + "' , '"+date+"', '"+paymentType+"')");
             }
             else
             {
                 sqlString = ("INSERT INTO Receipts (saleId, employeeId, imercoCardId, dateIssued, paymentType) " +
-                        "VALUES ('" + this.saledId + "' , '" + employeeId + "' , '" + imercoCardNum + "', '" + test + "', '" + paymentType + "')");
+                        "VALUES ('" + this.saledId + "' , '" + employeeId + "' , '" + imercoCardNum + "', '" + date + "', '" + paymentType + "')");
             }
             stmt.executeUpdate(sqlString);
 

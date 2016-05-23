@@ -16,6 +16,7 @@
                </font>
             </Label>
             <TextField fx:id="imercoCardField" />
+            <Label fx:id="validLbl" prefHeight="17.0" prefWidth="213.0" />
             <HBox alignment="TOP_RIGHT" prefHeight="122.0" prefWidth="647.0">
                <children>
                   <Button id="okButton" fx:id="okButton" mnemonicParsing="false" onAction="#createImercoCard" prefHeight="27.0" prefWidth="92.0" text="OK">

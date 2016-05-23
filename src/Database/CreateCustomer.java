@@ -59,8 +59,9 @@ public class CreateCustomer
         return id;
     }
 
-    public static void createImercoCard(TextField imercoCard)
+    public static boolean createImercoCard(TextField imercoCard)
     {
+        boolean succes = false;
 
         int imercoCardInt = Integer.parseInt(imercoCard.getText().toString());
         int imercoPoints = 0;
@@ -74,10 +75,12 @@ public class CreateCustomer
             String sqlString = ("INSERT INTO ImercoCard (imercoCardId, customerId, point) " +
                     "VALUES ('" + imercoCardInt + "' , '" + customerId + "' , '" + imercoPoints + "'  ) ");
             stmt.execute(sqlString);
+            succes = true;
         }
         catch (Exception e)
         {
         }
+        return succes;
     }
 
 }
