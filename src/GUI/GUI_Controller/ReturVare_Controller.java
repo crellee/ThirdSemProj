@@ -6,11 +6,16 @@ import Model.Product;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.net.URL;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -21,6 +26,8 @@ import java.util.ResourceBundle;
  */
 public class ReturVare_Controller implements Initializable
 {
+
+    ProductGUI_Intermediary productGUI_intermediary = ProductGUI_Intermediary.getInstance();
 
     ObservableList<Product> allProducts = FXCollections.observableArrayList();
 
@@ -35,6 +42,8 @@ public class ReturVare_Controller implements Initializable
 
     @FXML
     TableView<Product> mainTable;
+
+
 
     @Override
     public void initialize(URL location, ResourceBundle resources)
@@ -59,12 +68,9 @@ public class ReturVare_Controller implements Initializable
 
                 int h = rs.getInt("ammountOfProducts");
 
-
                 product.setProductId(rs.getInt("productId"));
                 product.setName(rs.getString("productName"));
-                //product.setDescription(rs.getString("productDescription"));
                 product.setPrice(rs.getInt("price"));
-                //product.setDiscount(rs.getInt("discount"));
 
                 for(int i = 0; i < h; i++)
                 {
@@ -76,6 +82,30 @@ public class ReturVare_Controller implements Initializable
         {
             e.printStackTrace();
         }
+    }
+
+    public void productToReturn()
+    {
+
+        Product product = mainTable.getSelectionModel().getSelectedItem();
+        allProducts.remove(product);
+        mainTable.setItems(allProducts);
+        productGUI_intermediary.addOneProduct(product);
+    }
+
+    public void registerProduct() throws IOException {
+
+        productGUI_intermediary.setAllProducts(allProducts);
+
+        Stage stage2 = (Stage) mainTable.getScene().getWindow();
+        stage2.close();
+
+        Stage stage1 = new Stage();
+        Parent root1 = FXMLLoader.load(getClass().getResource("/GUI/FXML_SalePage.fxml"));
+        Scene scene1 = new Scene(root1);
+        stage1.setScene(scene1);
+        stage1.show();
+
     }
 
 

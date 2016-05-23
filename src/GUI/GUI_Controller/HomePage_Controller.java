@@ -116,11 +116,29 @@ public class HomePage_Controller implements Initializable
 
     }
 
-    public void openReturnWindow() throws IOException {
+    public void openReturnWindow() throws IOException
+    {
+        Product product = new Product();
+        productGUIIntermediary.setFirstProduct(product);
+
+        Stage stage1 = new Stage();
+        Parent root1 = FXMLLoader.load(getClass().getResource("/GUI/FXML_SalePage.fxml"));
+        Scene scene1 = new Scene(root1);
+        stage1.setScene(scene1);
+        stage1.show();
+
+
         Stage stage = new Stage();
         Parent root = FXMLLoader.load(getClass().getResource("/GUI/FXML_EnterReceiptId.fxml"));
         Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
+
+        Stage stage2 = (Stage) startSaleBtn.getScene().getWindow();
+        stage2.close();
+
+
+        //    private ProductGUI_Intermediary productGUIIntermediary = ProductGUI_Intermediary.getInstance();
+
     }
 }

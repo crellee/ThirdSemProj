@@ -18,7 +18,7 @@
             </TableView>
             <VBox prefHeight="200.0" prefWidth="100.0" spacing="3.0">
                <children>
-                  <Button mnemonicParsing="false" prefHeight="70.0" prefWidth="120.0" styleClass="orangeButton" stylesheets="@CSS_HomePage.css" text="Vælg">
+                  <Button mnemonicParsing="false" onAction="#productToReturn" prefHeight="70.0" prefWidth="120.0" styleClass="orangeButton" stylesheets="@CSS_HomePage.css" text="Vælg">
                      <padding>
                         <Insets right="10.0" />
                      </padding>
@@ -28,7 +28,7 @@
                         <Insets right="10.0" />
                      </padding>
                   </Button>
-                  <Button mnemonicParsing="false" prefHeight="70.0" prefWidth="120.0" styleClass="greenButton" stylesheets="@CSS_HomePage.css" text="Bogfør">
+                  <Button mnemonicParsing="false" onAction="#registerProduct" prefHeight="70.0" prefWidth="120.0" styleClass="greenButton" stylesheets="@CSS_HomePage.css" text="Bogfør">
                      <padding>
                         <Insets right="10.0" />
                      </padding>
