@@ -81,7 +81,6 @@ public class SalePageReturn_Controller implements Initializable
         Calculator calculator = new Calculator();
 
 
-
         double totalAmount = calculator.updateTotalAmount(productGUI_intermediary.getAllProductsToReturn());
        totalAmountLbl.setText("-" + Double.toString(totalAmount));
 
