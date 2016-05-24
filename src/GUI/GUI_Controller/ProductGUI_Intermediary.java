@@ -21,6 +21,7 @@ public class ProductGUI_Intermediary
 
     //Used to update sales when return is made
     Map<Integer, ArrayList<Integer>> returnMap = new HashMap<>();
+    private int currentSaleId;
 
     private static ProductGUI_Intermediary singleton = new ProductGUI_Intermediary( );
 
@@ -73,5 +74,15 @@ public class ProductGUI_Intermediary
     public void addToReturnMap(Integer saleId, ArrayList<Integer> listProductNum)
     {
         returnMap.put(saleId, listProductNum);
+    }
+
+    public int getCurrentSaleId()
+    {
+        return currentSaleId;
+    }
+
+    public void setCurrentSaleId(int currentSaleId)
+    {
+        this.currentSaleId = currentSaleId;
     }
 }

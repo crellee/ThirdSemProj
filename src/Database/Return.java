@@ -74,7 +74,7 @@ and s1.productId = p1.productId
     public static int totalAmounts(int productId, int saleId) throws SQLException
     {
 
-        int i;
+        int i = -1;
         ResultSet rs = null;
         try
         {
@@ -87,12 +87,15 @@ and s1.productId = p1.productId
         {
 
         }
-        i = rs.getInt("ammountOfProducts");
+        while (rs.next())
+        {
+            i = rs.getInt("ammountOfProducts");
+        }
         System.out.println(i);
         return i;
     }
 
-    public void updateSalesTable(int saleId, int amount, int productId) throws SQLException
+    public static void updateSalesTable(int saleId, int amount, int productId) throws SQLException
     {
         String sqlString = "";
         int amountInTable = totalAmounts(productId, saleId);
@@ -100,11 +103,11 @@ and s1.productId = p1.productId
         Connection conn = DBConnection.getConnection();
         Statement stmt = conn.createStatement();
 
-        sqlString = "UPDATE ammountOfProducts from Sales SET ammountOfProducts = '"+num+"' where saleId = '"+saleId+"' " +
+        sqlString = "UPDATE Sales SET ammountOfProducts = '"+num+"' where saleId = '"+saleId+"' " +
                     "and productId = '"+productId+"' ";
 
 
-        stmt.executeQuery(sqlString);
+        stmt.executeUpdate(sqlString);
     }
 
 

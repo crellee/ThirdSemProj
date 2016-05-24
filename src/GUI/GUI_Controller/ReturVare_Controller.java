@@ -45,8 +45,6 @@ public class ReturVare_Controller implements Initializable
     @FXML
     TableView<Product> mainTable;
 
-    int currentSaleId;
-
     ArrayList<Integer> currentProductsToReturn = new ArrayList<>();
 
 
@@ -77,7 +75,7 @@ public class ReturVare_Controller implements Initializable
                 product.setName(rs.getString("productName"));
                 product.setPrice(rs.getInt("price"));
 
-                currentSaleId = rs.getInt("saleId");
+                productGUI_intermediary.setCurrentSaleId(rs.getInt("saleId"));
 
                 for(int i = 0; i < amount; i++)
                 {
@@ -101,12 +99,14 @@ public class ReturVare_Controller implements Initializable
         currentProductsToReturn.add(product.getProductId());
     }
 
-    public void registerProduct() throws IOException {
+    public void registerProduct() throws IOException, SQLException
+    {
 
-        productGUI_intermediary.addToReturnMap(currentSaleId, currentProductsToReturn);
+        productGUI_intermediary.addToReturnMap(productGUI_intermediary.getCurrentSaleId(), currentProductsToReturn);
 
         /*
-        for (Map.Entry<Integer, ArrayList<Integer>> ee : productGUI_intermediary.getReturnMap().entrySet()) {
+        for (Map.Entry<Integer, ArrayList<Integer>> ee : productGUI_intermediary.getReturnMap().entrySet())
+        {
             Integer saleId = ee.getKey();
             ArrayList<Integer> productList = ee.getValue();
             for (Integer productId : productList)
@@ -114,8 +114,9 @@ public class ReturVare_Controller implements Initializable
                 System.out.println("Product: " + productId + " Saled Id " + saleId);
             }
         }
-        //currentProductsToReturn.clear();
         */
+        //currentProductsToReturn.clear();
+
 
         Stage stage2 = (Stage) mainTable.getScene().getWindow();
         stage2.close();

@@ -1,5 +1,6 @@
 package GUI.GUI_Controller;
 
+import Database.Return;
 import Model.Product;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -13,6 +14,10 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.Map;
 import java.util.ResourceBundle;
 
 /**
@@ -57,5 +62,33 @@ public class SalePageReturn_Controller implements Initializable
         Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
+    }
+
+    public void endReturn() throws SQLException
+    {
+        for (Map.Entry<Integer, ArrayList<Integer>> entry : productGUI_intermediary.getReturnMap().entrySet())
+        {
+            Integer saleIdNum = entry.getKey();
+            ArrayList<Integer> numList = entry.getValue();
+            for (int productNum: numList)
+            {
+                Return.updateSalesTable(saleIdNum, 1, productNum);
+            }
+        }
+        /*
+        //ArrayList<Integer> testlist = productGUI_intermediary.getReturnMap().get(productGUI_intermediary.getCurrentSaleId());
+        Iterator entries = productGUI_intermediary.getReturnMap().entrySet().iterator();
+        while (entries.hasNext())
+        {
+            Integer saleId = (Integer) entries.next();
+            try
+            {
+                Return.updateSalesTable(productGUI_intermediary.getCurrentSaleId(), 1, productId);
+            } catch (SQLException e)
+            {
+                e.printStackTrace();
+            }
+        }
+        */
     }
 }
