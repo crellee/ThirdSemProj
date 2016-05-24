@@ -127,4 +127,25 @@ and s1.productId = p1.productId
     {
         return totalDoub;
     }
+
+    public static void newMethod(int productId) throws SQLException
+    {
+        String sqlString = "";
+        double tmp = 0;
+        ResultSet rs = null;
+
+
+        Connection conn = DBConnection.getConnection();
+        Statement stmt = conn.createStatement();
+
+        String sqlString2 = "select * from Products where productId = '"+productId+"' ";
+        rs = stmt.executeQuery(sqlString2);
+
+        while(rs.next())
+        {
+
+            tmp = rs.getDouble("price");
+            totalDoub = totalDoub + tmp;
+        }
+    }
 }
