@@ -120,12 +120,31 @@ public class SalePageReturn_Controller implements Initializable
             {
                 Return.updateSalesTable(saleIdNum, 1, productNum);
             }
+        }
+    }
 
-            System.out.println(Return.getTotalDoub());
+    public void updateReturnAmount() throws SQLException {
+
+        for (Product product: productGUI_intermediary.getAllProductsToReturn())
+        {
+            Return.newMethod(product.getProductId());
+        }
+
+        /*
+        for (Map.Entry<Integer, ArrayList<Integer>> entry : productGUI_intermediary.getReturnMap().entrySet())
+        {
+
+            ArrayList<Integer> numList = entry.getValue();
+            for (int productNum : numList)
+            {
+                Return.newMethod(productNum);
+            }
+
 
             totalAmountLbl.setText("" + Return.getTotalDoub());
-
         }
+        */
+        totalAmountLbl.setText("" + Return.getTotalDoub());
     }
         /*
         //ArrayList<Integer> testlist = productGUI_intermediary.getReturnMap().get(productGUI_intermediary.getCurrentSaleId());
