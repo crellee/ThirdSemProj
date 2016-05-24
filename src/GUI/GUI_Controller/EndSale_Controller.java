@@ -136,7 +136,6 @@ public class EndSale_Controller implements Initializable
     {
         double totalAmount = calculator.updateTotalAmount(allProducts);
 
-
         int total = Algorithm.PointCounter.countPoints((int) totalAmount);
 
         EndSale.updateImercoPoints(total);

@@ -118,11 +118,9 @@ public class HomePage_Controller implements Initializable
 
     public void openReturnWindow() throws IOException
     {
-        Product product = new Product();
-        productGUIIntermediary.setFirstProduct(product);
 
         Stage stage1 = new Stage();
-        Parent root1 = FXMLLoader.load(getClass().getResource("/GUI/FXML_SalePage.fxml"));
+        Parent root1 = FXMLLoader.load(getClass().getResource("/GUI/FXML_SalePageReturn.fxml"));
         Scene scene1 = new Scene(root1);
         stage1.setScene(scene1);
         stage1.show();

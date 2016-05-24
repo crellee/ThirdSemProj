@@ -13,6 +13,7 @@ public class ProductGUI_Intermediary
 {
     Product product;
     ObservableList<Product> allProducts = FXCollections.observableArrayList();
+    ObservableList<Product> productsToReturnList = FXCollections.observableArrayList();
 
 
     private static ProductGUI_Intermediary singleton = new ProductGUI_Intermediary( );
@@ -50,6 +51,10 @@ public class ProductGUI_Intermediary
 
     public void addOneProduct(Product product)
     {
-        this.allProducts.add(product);
+        this.productsToReturnList.add(product);
+    }
+
+    public ObservableList<Product> getAllProductsToReturn() {
+        return productsToReturnList;
     }
 }

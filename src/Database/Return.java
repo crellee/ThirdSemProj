@@ -13,6 +13,7 @@ import java.sql.Statement;
 public class Return
 {
     static int receiptIdstat;
+    static int saleIdstat;
 
     public static boolean findReceipt(TextField receiptId) {
         boolean verified = false;
@@ -52,7 +53,7 @@ public class Return
                     "inner join Imerco_Project.Receipts as r1 " +
                     "where r1.receiptId = '"+receiptIdstat+"' " +
                     "and r1.saleId = s1.saleId " +
-                    "and s1.productId = p1.productId";
+                    "and s1.productId = p1.productId ";
             rs = stmt.executeQuery(sqlString);
 
         }
@@ -60,6 +61,7 @@ public class Return
         {
 
         }
+        System.out.println(saleIdstat);
         return rs;
     }
     /*

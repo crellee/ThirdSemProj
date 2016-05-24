@@ -227,4 +227,13 @@ public class SalePage_Controller implements Initializable
         double paidAmount = calculator.updatePaidAmount();
         paidAmountLbl.setText(Double.toString(paidAmount));
     }
+
+    public void openReturnWindow() throws IOException
+    {
+        Stage stage = new Stage();
+        Parent root = FXMLLoader.load(getClass().getResource("/GUI/FXML_EnterReceiptId.fxml"));
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
 }

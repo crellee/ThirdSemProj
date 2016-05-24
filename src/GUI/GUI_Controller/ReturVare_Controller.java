@@ -86,8 +86,8 @@ public class ReturVare_Controller implements Initializable
 
     public void productToReturn()
     {
-
         Product product = mainTable.getSelectionModel().getSelectedItem();
+        product.setAmount(1);
         allProducts.remove(product);
         mainTable.setItems(allProducts);
         productGUI_intermediary.addOneProduct(product);
@@ -95,13 +95,11 @@ public class ReturVare_Controller implements Initializable
 
     public void registerProduct() throws IOException {
 
-        productGUI_intermediary.setAllProducts(allProducts);
-
         Stage stage2 = (Stage) mainTable.getScene().getWindow();
         stage2.close();
 
         Stage stage1 = new Stage();
-        Parent root1 = FXMLLoader.load(getClass().getResource("/GUI/FXML_SalePage.fxml"));
+        Parent root1 = FXMLLoader.load(getClass().getResource("/GUI/FXML_SalePageReturn.fxml"));
         Scene scene1 = new Scene(root1);
         stage1.setScene(scene1);
         stage1.show();
