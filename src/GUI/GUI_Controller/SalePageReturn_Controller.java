@@ -74,32 +74,26 @@ public class SalePageReturn_Controller implements Initializable
         disc.setCellValueFactory(new PropertyValueFactory<Model.Product, Integer>("discount"));
         amount.setCellValueFactory(new PropertyValueFactory<Model.Product, Integer>("amount"));
 
-        mainTable.getSelectionModel().setCellSelectionEnabled(true);
-        mainTable.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
 
 
-
+        mainTable.setItems(productGUI_intermediary.getAllProductsToReturn());
 
         Calculator calculator = new Calculator();
 
 
 
+        double totalAmount = calculator.updateTotalAmount(productGUI_intermediary.getAllProductsToReturn());
+       totalAmountLbl.setText("-" + Double.toString(totalAmount));
 
+        int discountAmount = calculator.updateDiscount(productGUI_intermediary.getAllProductsToReturn());
+        discountLbl.setText(Integer.toString(discountAmount));
 
-        //double totalAmount = calculator.updateTotalAmount(allProducts);
-//        totalAmountLbl.setText(Double.toString(totalAmount));
+        double toOweAmount = calculator.updateToOwe(productGUI_intermediary.getAllProductsToReturn());
+        toOweLbl.setText("-" + Double.toString(toOweAmount));
 
-        //int discountAmount = calculator.updateDiscount(allProducts);
-        //discountLbl.setText(Integer.toString(discountAmount));
+        double paidAmount = calculator.updatePaidAmount();
+        paidAmountLbl.setText(Double.toString(paidAmount));
 
-        //double toOweAmount = calculator.updateToOwe(allProducts);
-        //toOweLbl.setText(Double.toString(toOweAmount));
-
-        //double paidAmount = calculator.updatePaidAmount();
-        //paidAmountLbl.setText(Double.toString(paidAmount));
-
-
-        mainTable.setItems(productGUI_intermediary.getAllProductsToReturn());
     }
 
     public void openReturnWindow() throws IOException
@@ -121,9 +115,9 @@ public class SalePageReturn_Controller implements Initializable
                 Return.updateSalesTable(saleIdNum, 1, productNum);
             }
 
-            System.out.println(Return.getTotalDoub());
+            //System.out.println(Return.getTotalDoub());
 
-            totalAmountLbl.setText("" + Return.getTotalDoub());
+            //totalAmountLbl.setText("" + Return.getTotalDoub());
 
         }
     }

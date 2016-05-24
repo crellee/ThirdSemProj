@@ -121,11 +121,18 @@ public class ReturVare_Controller implements Initializable
         */
         //currentProductsToReturn.clear();
 
+        Main_Controller main_controller = Main_Controller.getInstance();
+        main_controller.getStage().close();
+
+        Stage stage1 = new Stage();
+        main_controller.setStage(stage1);
+        Parent root1 = FXMLLoader.load(getClass().getResource("/GUI/FXML_SalePageReturn.fxml"));
+        Scene scene1 = new Scene(root1);
+        main_controller.getStage().setScene(scene1);
+        main_controller.showStage();
 
         Stage stage2 = (Stage) mainTable.getScene().getWindow();
         stage2.close();
-
-
     }
 
 

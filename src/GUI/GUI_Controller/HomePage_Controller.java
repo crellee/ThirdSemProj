@@ -113,17 +113,20 @@ public class HomePage_Controller implements Initializable
             e.printStackTrace();
         }
         return null;
-
     }
+
 
     public void openReturnWindow() throws IOException
     {
 
+        Main_Controller main_controller = Main_Controller.getInstance();
         Stage stage1 = new Stage();
+        main_controller.setStage(stage1);
         Parent root1 = FXMLLoader.load(getClass().getResource("/GUI/FXML_SalePageReturn.fxml"));
         Scene scene1 = new Scene(root1);
         stage1.setScene(scene1);
         stage1.show();
+
 
 
         Stage stage = new Stage();
@@ -132,8 +135,10 @@ public class HomePage_Controller implements Initializable
         stage.setScene(scene);
         stage.show();
 
+
         Stage stage2 = (Stage) startSaleBtn.getScene().getWindow();
         stage2.close();
+
 
 
         //    private ProductGUI_Intermediary productGUIIntermediary = ProductGUI_Intermediary.getInstance();
