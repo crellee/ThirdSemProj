@@ -14,6 +14,7 @@ public class Product
     private double price;
     private double discount;
     private int amount;
+    private int receiptId;
 
     //?Instanciate via database?
     public static List<Product> productArrayList = new ArrayList<>();
@@ -89,5 +90,15 @@ public class Product
 
     public void setAmount(int amount) {
         this.amount = amount;
+    }
+
+    public int getReceiptId()
+    {
+        return receiptId;
+    }
+
+    public void setReceiptId(int receiptId)
+    {
+        this.receiptId = receiptId;
     }
 }

@@ -55,13 +55,11 @@ public class Return
                     "and r1.saleId = s1.saleId " +
                     "and s1.productId = p1.productId ";
             rs = stmt.executeQuery(sqlString);
-
         }
         catch (SQLException e)
         {
 
         }
-        System.out.println(saleIdstat);
         return rs;
     }
     /*
@@ -73,4 +71,41 @@ and r1.saleId = s1.saleId
 and s1.productId = p1.productId
 
      */
+    public static int totalAmounts(int productId, int saleId) throws SQLException
+    {
+
+        int i;
+        ResultSet rs = null;
+        try
+        {
+            Connection conn = DBConnection.getConnection();
+            Statement stmt = conn.createStatement();
+
+            String sqlString = "SELECT ammountOfProducts from Sales where productId = '"+productId+"' and saleId = '"+saleId+"' ";
+            rs = stmt.executeQuery(sqlString);
+        } catch (SQLException e)
+        {
+
+        }
+        i = rs.getInt("ammountOfProducts");
+        System.out.println(i);
+        return i;
+    }
+
+    public void updateSalesTable(int saleId, int amount, int productId) throws SQLException
+    {
+        String sqlString = "";
+        int amountInTable = totalAmounts(productId, saleId);
+        int num = amountInTable - amount;
+        Connection conn = DBConnection.getConnection();
+        Statement stmt = conn.createStatement();
+
+        sqlString = "UPDATE ammountOfProducts from Sales SET ammountOfProducts = '"+num+"' where saleId = '"+saleId+"' " +
+                    "and productId = '"+productId+"' ";
+
+
+        stmt.executeQuery(sqlString);
+    }
+
+
 }

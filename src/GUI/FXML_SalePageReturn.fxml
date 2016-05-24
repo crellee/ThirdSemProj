@@ -103,7 +103,7 @@
                                 <Insets right="10.0" />
                             </padding>
                         </Button>
-                        <Button fx:id="paymentBtn" mnemonicParsing="false" prefHeight="70.0" prefWidth="120.0" styleClass="greenButton" stylesheets="@CSS_HomePage.css" text="Betaling">
+                        <Button fx:id="paymentBtn" mnemonicParsing="false" onAction="#updateTabels" prefHeight="70.0" prefWidth="120.0" styleClass="greenButton" stylesheets="@CSS_HomePage.css" text="Betaling">
                             <padding>
                                 <Insets right="10.0" />
                             </padding>
@@ -173,9 +173,9 @@
                 <Label fx:id="pointLabel" prefHeight="17.0" prefWidth="312.0" />
                 <TableView id="saleTable" fx:id="mainTable" prefHeight="668.0" prefWidth="718.0">
                     <columns>
-                        <TableColumn fx:id="prodId" prefWidth="95.0" text="Product ID" />
+                        <TableColumn fx:id="receiptId" prefWidth="115.0" text="Receipt ID" />
+                        <TableColumn fx:id="prodId" prefWidth="180.0" text="Product ID" />
                         <TableColumn fx:id="productName" prefWidth="123.0" text="ProductName" />
-                        <TableColumn fx:id="desc" prefWidth="200.0" text="Description" />
                         <TableColumn fx:id="price" prefWidth="109.0" text="Price" />
                         <TableColumn fx:id="disc" prefWidth="95.0" text="Discount" />
                         <TableColumn fx:id="amount" prefWidth="85.0" text="Amount" />

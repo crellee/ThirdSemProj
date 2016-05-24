@@ -19,6 +19,8 @@ import java.io.IOException;
 import java.net.URL;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.Map;
 import java.util.ResourceBundle;
 
 /**
@@ -43,6 +45,9 @@ public class ReturVare_Controller implements Initializable
     @FXML
     TableView<Product> mainTable;
 
+    int currentSaleId;
+
+    ArrayList<Integer> currentProductsToReturn = new ArrayList<>();
 
 
     @Override
@@ -57,22 +62,24 @@ public class ReturVare_Controller implements Initializable
         productNameCol.setCellValueFactory(new PropertyValueFactory<Product, String>("name"));
         priceCol.setCellValueFactory(new PropertyValueFactory<Model.Product, Double>("price"));
 
+        ResultSet rs = Return.toFillTable();
 
         try
         {
-            ResultSet rs = Return.toFillTable();
             while (rs.next())
             {
 
                 Model.Product product = new Model.Product();
 
-                int h = rs.getInt("ammountOfProducts");
+                int amount = rs.getInt("ammountOfProducts");
 
                 product.setProductId(rs.getInt("productId"));
                 product.setName(rs.getString("productName"));
                 product.setPrice(rs.getInt("price"));
 
-                for(int i = 0; i < h; i++)
+                currentSaleId = rs.getInt("saleId");
+
+                for(int i = 0; i < amount; i++)
                 {
                     allProducts.addAll(product);
                     mainTable.setItems(allProducts);
@@ -84,25 +91,35 @@ public class ReturVare_Controller implements Initializable
         }
     }
 
-    public void productToReturn()
+    public void productToReturn() throws SQLException
     {
         Product product = mainTable.getSelectionModel().getSelectedItem();
         product.setAmount(1);
         allProducts.remove(product);
         mainTable.setItems(allProducts);
         productGUI_intermediary.addOneProduct(product);
+        currentProductsToReturn.add(product.getProductId());
     }
 
     public void registerProduct() throws IOException {
 
+        productGUI_intermediary.addToReturnMap(currentSaleId, currentProductsToReturn);
+
+        /*
+        for (Map.Entry<Integer, ArrayList<Integer>> ee : productGUI_intermediary.getReturnMap().entrySet()) {
+            Integer saleId = ee.getKey();
+            ArrayList<Integer> productList = ee.getValue();
+            for (Integer productId : productList)
+            {
+                System.out.println("Product: " + productId + " Saled Id " + saleId);
+            }
+        }
+        //currentProductsToReturn.clear();
+        */
+
         Stage stage2 = (Stage) mainTable.getScene().getWindow();
         stage2.close();
 
-        Stage stage1 = new Stage();
-        Parent root1 = FXMLLoader.load(getClass().getResource("/GUI/FXML_SalePageReturn.fxml"));
-        Scene scene1 = new Scene(root1);
-        stage1.setScene(scene1);
-        stage1.show();
 
     }
 

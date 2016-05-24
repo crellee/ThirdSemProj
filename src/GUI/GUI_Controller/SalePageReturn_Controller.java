@@ -25,7 +25,7 @@ public class SalePageReturn_Controller implements Initializable
     @FXML
     TableColumn productName;
     @FXML
-    TableColumn desc;
+    TableColumn receiptId;
     @FXML
     TableColumn price;
     @FXML
@@ -42,7 +42,7 @@ public class SalePageReturn_Controller implements Initializable
     {
         prodId.setCellValueFactory(new PropertyValueFactory<Product, Integer>("productId"));
         productName.setCellValueFactory(new PropertyValueFactory<Product, String>("name"));
-        desc.setCellValueFactory(new PropertyValueFactory<Model.Product, String>("description"));
+        receiptId.setCellValueFactory(new PropertyValueFactory<Model.Product, String>("receiptId"));
         price.setCellValueFactory(new PropertyValueFactory<Model.Product, Double>("price"));
         disc.setCellValueFactory(new PropertyValueFactory<Model.Product, Integer>("discount"));
         amount.setCellValueFactory(new PropertyValueFactory<Model.Product, Integer>("amount"));

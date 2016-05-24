@@ -4,6 +4,10 @@ import Model.Product;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * Created by roije on 13/05/2016.
  * This method used as a intermediary between HomePage_Controller and SalePage_Controller to get the first
@@ -15,6 +19,8 @@ public class ProductGUI_Intermediary
     ObservableList<Product> allProducts = FXCollections.observableArrayList();
     ObservableList<Product> productsToReturnList = FXCollections.observableArrayList();
 
+    //Used to update sales when return is made
+    Map<Integer, ArrayList<Integer>> returnMap = new HashMap<>();
 
     private static ProductGUI_Intermediary singleton = new ProductGUI_Intermediary( );
 
@@ -56,5 +62,16 @@ public class ProductGUI_Intermediary
 
     public ObservableList<Product> getAllProductsToReturn() {
         return productsToReturnList;
+    }
+
+
+    public Map<Integer, ArrayList<Integer>> getReturnMap()
+    {
+        return returnMap;
+    }
+
+    public void addToReturnMap(Integer saleId, ArrayList<Integer> listProductNum)
+    {
+        returnMap.put(saleId, listProductNum);
     }
 }
