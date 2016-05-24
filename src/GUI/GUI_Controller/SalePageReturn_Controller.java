@@ -1,12 +1,17 @@
 package GUI.GUI_Controller;
 
+import Algorithm.Calculator;
 import Database.Return;
 import Model.Product;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
+import javafx.scene.control.SelectionMode;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -25,6 +30,7 @@ import java.util.ResourceBundle;
  */
 public class SalePageReturn_Controller implements Initializable
 {
+
     @FXML
     TableColumn prodId;
     @FXML
@@ -40,6 +46,22 @@ public class SalePageReturn_Controller implements Initializable
     @FXML
     TableView<Product> mainTable;
 
+    @FXML
+    Label totalAmountLbl;
+
+    @FXML
+    Label discountLbl;
+
+    @FXML
+    Label toOweLbl;
+
+    @FXML
+    Label paidAmountLbl;
+
+    ObservableList<Product> allProducts = FXCollections.observableArrayList();
+
+
+
     ProductGUI_Intermediary productGUI_intermediary = ProductGUI_Intermediary.getInstance();
 
     @Override
@@ -51,6 +73,31 @@ public class SalePageReturn_Controller implements Initializable
         price.setCellValueFactory(new PropertyValueFactory<Model.Product, Double>("price"));
         disc.setCellValueFactory(new PropertyValueFactory<Model.Product, Integer>("discount"));
         amount.setCellValueFactory(new PropertyValueFactory<Model.Product, Integer>("amount"));
+
+        mainTable.getSelectionModel().setCellSelectionEnabled(true);
+        mainTable.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
+
+
+
+
+        Calculator calculator = new Calculator();
+
+
+
+
+
+        //double totalAmount = calculator.updateTotalAmount(allProducts);
+//        totalAmountLbl.setText(Double.toString(totalAmount));
+
+        //int discountAmount = calculator.updateDiscount(allProducts);
+        //discountLbl.setText(Integer.toString(discountAmount));
+
+        //double toOweAmount = calculator.updateToOwe(allProducts);
+        //toOweLbl.setText(Double.toString(toOweAmount));
+
+        //double paidAmount = calculator.updatePaidAmount();
+        //paidAmountLbl.setText(Double.toString(paidAmount));
+
 
         mainTable.setItems(productGUI_intermediary.getAllProductsToReturn());
     }
@@ -66,15 +113,20 @@ public class SalePageReturn_Controller implements Initializable
 
     public void endReturn() throws SQLException
     {
-        for (Map.Entry<Integer, ArrayList<Integer>> entry : productGUI_intermediary.getReturnMap().entrySet())
-        {
+        for (Map.Entry<Integer, ArrayList<Integer>> entry : productGUI_intermediary.getReturnMap().entrySet()) {
             Integer saleIdNum = entry.getKey();
             ArrayList<Integer> numList = entry.getValue();
-            for (int productNum: numList)
+            for (int productNum : numList)
             {
                 Return.updateSalesTable(saleIdNum, 1, productNum);
             }
+
+            System.out.println(Return.getTotalDoub());
+
+            totalAmountLbl.setText("" + Return.getTotalDoub());
+
         }
+    }
         /*
         //ArrayList<Integer> testlist = productGUI_intermediary.getReturnMap().get(productGUI_intermediary.getCurrentSaleId());
         Iterator entries = productGUI_intermediary.getReturnMap().entrySet().iterator();
@@ -90,5 +142,6 @@ public class SalePageReturn_Controller implements Initializable
             }
         }
         */
-    }
+
 }
+

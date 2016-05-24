@@ -15,6 +15,10 @@ public class Return
     static int receiptIdstat;
     static int saleIdstat;
 
+
+
+    static double totalDoub;
+
     public static boolean findReceipt(TextField receiptId) {
         boolean verified = false;
         int receiptIdInt = Integer.parseInt(receiptId.getText());
@@ -70,7 +74,7 @@ where r1.receiptId = 6
 and r1.saleId = s1.saleId
 and s1.productId = p1.productId
 
-     */
+*/
     public static int totalAmounts(int productId, int saleId) throws SQLException
     {
 
@@ -103,12 +107,24 @@ and s1.productId = p1.productId
         Connection conn = DBConnection.getConnection();
         Statement stmt = conn.createStatement();
 
+        ResultSet rs = null;
+
         sqlString = "UPDATE Sales SET ammountOfProducts = '"+num+"' where saleId = '"+saleId+"' " +
                     "and productId = '"+productId+"' ";
 
-
         stmt.executeUpdate(sqlString);
+
+        String sqlString2 = "select * from Products where productId = '"+productId+"' ";
+        rs = stmt.executeQuery(sqlString2);
+
+        while(rs.next())
+        {
+            totalDoub = totalDoub + rs.getDouble("price");
+        }
     }
 
-
+    public static double getTotalDoub()
+    {
+        return totalDoub;
+    }
 }

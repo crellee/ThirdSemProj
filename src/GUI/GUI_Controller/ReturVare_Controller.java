@@ -1,5 +1,6 @@
 package GUI.GUI_Controller;
 
+import Algorithm.Calculator;
 import Database.ProductVerifier;
 import Database.Return;
 import Model.Product;
@@ -91,12 +92,15 @@ public class ReturVare_Controller implements Initializable
 
     public void productToReturn() throws SQLException
     {
+        Calculator calculator = new Calculator();
+
         Product product = mainTable.getSelectionModel().getSelectedItem();
         product.setAmount(1);
         allProducts.remove(product);
         mainTable.setItems(allProducts);
         productGUI_intermediary.addOneProduct(product);
         currentProductsToReturn.add(product.getProductId());
+
     }
 
     public void registerProduct() throws IOException, SQLException
