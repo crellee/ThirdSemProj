@@ -97,12 +97,12 @@ and s1.productId = p1.productId
         {
             i = rs.getInt("ammountOfProducts");
         }
-        System.out.println(i);
         return i;
     }
 
     public static void updateSalesTable(int saleId, int amount, int productId) throws SQLException
     {
+        totalDoub = 0;
         String sqlString = "";
         int amountInTable = totalAmounts(productId, saleId);
         int num = amountInTable - amount;

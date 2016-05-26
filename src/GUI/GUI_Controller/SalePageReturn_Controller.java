@@ -61,8 +61,6 @@ public class SalePageReturn_Controller implements Initializable
 
     ObservableList<Product> allProducts = FXCollections.observableArrayList();
 
-
-
     ProductGUI_Intermediary productGUI_intermediary = ProductGUI_Intermediary.getInstance();
 
     @Override
