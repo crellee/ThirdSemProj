@@ -9,6 +9,7 @@ import java.sql.Statement;
 
 /**
  * Created by christianhasselstrom on 23/05/2016.
+ * #TheChamp
  */
 public class Return
 {
@@ -143,7 +144,6 @@ and s1.productId = p1.productId
 
         while(rs.next())
         {
-
             tmp = rs.getDouble("price");
             totalDoub = totalDoub + tmp;
         }

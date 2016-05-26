@@ -61,6 +61,7 @@ public class ReturVare_Controller implements Initializable
         productNameCol.setCellValueFactory(new PropertyValueFactory<Product, String>("name"));
         priceCol.setCellValueFactory(new PropertyValueFactory<Model.Product, Double>("price"));
 
+
         ResultSet rs = Return.toFillTable();
 
         try
@@ -75,6 +76,7 @@ public class ReturVare_Controller implements Initializable
                 product.setProductId(rs.getInt("productId"));
                 product.setName(rs.getString("productName"));
                 product.setPrice(rs.getInt("price"));
+                product.setReceiptId(rs.getInt("receiptId"));
 
                 productGUI_intermediary.setCurrentSaleId(rs.getInt("saleId"));
 
