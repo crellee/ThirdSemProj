@@ -103,10 +103,12 @@ public class SalePageReturn_Controller implements Initializable
         stage.show();
     }
 
-    public void endReturn() throws SQLException, IOException {
+    public void endReturn() throws SQLException, IOException
+    {
         for (Map.Entry<Integer, ArrayList<Integer>> entry : productGUI_intermediary.getReturnMap().entrySet()) {
             Integer saleIdNum = entry.getKey();
             ArrayList<Integer> numList = entry.getValue();
+
             for (int productNum : numList)
             {
                 Return.updateSalesTable(saleIdNum, 1, productNum);

@@ -103,7 +103,7 @@
                                 <Insets right="10.0" />
                             </padding>
                         </Button>
-                        <Button fx:id="paymentBtn" mnemonicParsing="false" onAction="#endReturn" prefHeight="70.0" prefWidth="120.0" styleClass="greenButton" stylesheets="@CSS_HomePage.css" text="Betaling">
+                        <Button fx:id="paymentBtn" mnemonicParsing="false" onAction="#endReturn" prefHeight="70.0" prefWidth="120.0" styleClass="greenButton" stylesheets="@CSS_HomePage.css" text="Udbetaling">
                             <padding>
                                 <Insets right="10.0" />
                             </padding>

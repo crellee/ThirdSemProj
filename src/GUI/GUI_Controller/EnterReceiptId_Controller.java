@@ -12,6 +12,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 import java.io.IOException;
 import java.net.URL;
@@ -59,6 +60,7 @@ public class EnterReceiptId_Controller implements Initializable
             actualStage.close();
 
             Stage stage2 = new Stage();
+            stage2.initStyle(StageStyle.UNDECORATED);
             Parent root = FXMLLoader.load(getClass().getResource("/GUI/FXML_ReturVare.fxml"));
             Scene scene = new Scene(root);
             stage2.setScene(scene);
