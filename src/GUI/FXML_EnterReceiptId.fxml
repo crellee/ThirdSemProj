@@ -14,8 +14,27 @@
                <font>
                   <Font size="20.0" />
                </font>
+               <VBox.margin>
+                  <Insets left="10.0" top="10.0" />
+               </VBox.margin>
             </Label>
-            <TextField fx:id="receiptIdField" />
+            <TextField fx:id="receiptIdField" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="27.0" prefWidth="577.0">
+               <VBox.margin>
+                  <Insets left="10.0" />
+               </VBox.margin></TextField>
+            <Label prefHeight="26.0" prefWidth="279.0" text="Enter Imerco Card Number:">
+               <font>
+                  <Font size="20.0" />
+               </font>
+               <VBox.margin>
+                  <Insets left="10.0" />
+               </VBox.margin>
+            </Label>
+            <TextField fx:id="receiptIdField1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="27.0" prefWidth="578.0">
+               <VBox.margin>
+                  <Insets left="10.0" />
+               </VBox.margin>
+            </TextField>
             <Label fx:id="validLbl" prefHeight="17.0" prefWidth="213.0" />
             <HBox alignment="TOP_RIGHT" prefHeight="122.0" prefWidth="647.0">
                <children>
@@ -24,7 +43,7 @@
                         <Insets />
                      </opaqueInsets>
                      <HBox.margin>
-                        <Insets left="160.0" />
+                        <Insets bottom="10.0" left="160.0" right="10.0" />
                      </HBox.margin>
                   </Button>
                </children>
