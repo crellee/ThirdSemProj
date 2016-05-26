@@ -113,8 +113,7 @@ public class EndSale_Controller implements Initializable
         endSale.show();
     }
 
-    public void doneDeal(ActionEvent event)
-    {
+    public void doneDeal(ActionEvent event) throws IOException {
         Button clickedBtn = null;
         Object source = event.getSource();
         if (source instanceof Button)
@@ -129,6 +128,17 @@ public class EndSale_Controller implements Initializable
         {
             updateImercoPoints();
         }
+
+        EndSale.resetStatics();
+
+        Stage stage2 = (Stage) totalAmountLbl.getScene().getWindow();
+        stage2.close();
+
+        Stage stage = new Stage();
+        Parent root = FXMLLoader.load(getClass().getResource("/GUI/FXML_FrontPage.fxml"));
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
 
     }
 
