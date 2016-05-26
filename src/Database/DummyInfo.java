@@ -27,7 +27,6 @@ public class DummyInfo
             Connection conn = DBConnection.getConnection();
             stmt = conn.createStatement();
 
-            System.out.println("Her");
             sqlString ="INSERT INTO customer (customerFirstName, customerLastName, email, zipCode)" +
                     "VALUES('Hanne','Frank','hanne@live.dk', 2500 )," +
                     "('Bo', 'Gremling', 'bobo@gmail.dk', 2200 )," +
@@ -40,7 +39,6 @@ public class DummyInfo
                     "('Kristin', 'Helgadóttir', 'kh@mail.dk', 3520 )," +
                     "('Nathalie', 'Larsen', 'nl@mail.dk', 3390 )";
             stmt.executeUpdate(sqlString);
-            System.out.println("Der");
 
             stmt1 = conn.createStatement();
             sqlString1 ="INSERT INTO employee (employeeId, employeeName)" +

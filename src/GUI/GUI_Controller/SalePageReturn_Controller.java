@@ -117,14 +117,15 @@ public class SalePageReturn_Controller implements Initializable
 
             Return.resetStatics();
 
-            Stage stage2 = (Stage) totalAmountLbl.getScene().getWindow();
-            stage2.close();
+            Main_Controller main_controller = Main_Controller.getInstance();
+            main_controller.getStage().close();
 
             Stage stage = new Stage();
+            main_controller.setStage(stage);
             Parent root = FXMLLoader.load(getClass().getResource("/GUI/FXML_FrontPage.fxml"));
             Scene scene = new Scene(root);
             stage.setScene(scene);
-            stage.show();
+            main_controller.showStage();
 
         }
     }

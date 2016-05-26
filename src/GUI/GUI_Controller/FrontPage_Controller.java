@@ -55,6 +55,7 @@ public class FrontPage_Controller implements Initializable
     private void changeToHomePage()
     {
         Main_Controller main_controller = Main_Controller.getInstance();
+        main_controller.getStage().close();
         Parent root = null;
         try
         {
@@ -64,7 +65,8 @@ public class FrontPage_Controller implements Initializable
         {
             e.printStackTrace();
         }
-        Stage homeScreenStage = main_controller.getStage();
+        Stage homeScreenStage = new Stage();
+        main_controller.setStage(homeScreenStage);
         Scene scene = new Scene(root);
         homeScreenStage.setScene(scene);
         main_controller.showStage();
