@@ -14,16 +14,16 @@ import java.sql.Statement;
 public class Return
 {
     static int receiptIdstat;
+    static int imercoCardIdstat;
     static int saleIdstat;
-
-
-
     static double totalDoub;
 
-    public static boolean findReceipt(TextField receiptId) {
+    public static boolean findReceipt(TextField receiptId, TextField imercoCardId) {
         boolean verified = false;
         int receiptIdInt = Integer.parseInt(receiptId.getText());
+        int imercoCardIdInt = Integer.parseInt(imercoCardId.getText());
         receiptIdstat = receiptIdInt;
+        imercoCardIdstat = imercoCardIdInt;
 
         try {
             Connection conn = DBConnection.getConnection();
@@ -31,10 +31,11 @@ public class Return
             ResultSet rs;
 
             if (receiptId != null) {
-                String sqlString = "SELECT * FROM Receipts WHERE receiptId = '" + receiptIdInt + "'";
+                String sqlString = "SELECT * FROM Receipts WHERE receiptId = '" + receiptIdInt + "' and imercoCardId = '"+imercoCardIdInt+"' ";
                 rs = stmt.executeQuery(sqlString);
 
-                if (rs.next()) {
+                if (rs.next())
+                {
                     verified = true;
                 }
             }
@@ -147,5 +148,19 @@ and s1.productId = p1.productId
             tmp = rs.getDouble("price");
             totalDoub = totalDoub + tmp;
         }
+    }
+    public static int getImercoCardIdstat() {
+        return imercoCardIdstat;
+    }
+
+    public static void updateImercoPoints(int newPoint) throws SQLException
+    {
+        Connection conn = DBConnection.getConnection();
+        Statement stmt = conn.createStatement();
+
+        String sqlString = "update ImercoCard set point = point - '"+newPoint+"' " +
+                "where imercoCardId = '"+imercoCardIdstat+"' ";
+        stmt.executeUpdate(sqlString);
+
     }
 }

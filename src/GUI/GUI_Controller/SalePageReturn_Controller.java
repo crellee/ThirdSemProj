@@ -1,6 +1,7 @@
 package GUI.GUI_Controller;
 
 import Algorithm.Calculator;
+import Algorithm.PointCounter;
 import Database.Return;
 import Model.Product;
 import javafx.collections.FXCollections;
@@ -113,7 +114,9 @@ public class SalePageReturn_Controller implements Initializable
             {
                 Return.updateSalesTable(saleIdNum, 1, productNum);
             }
+            int point = PointCounter.countPoints((int) Return.getTotalDoub());
 
+            Return.updateImercoPoints(point);
             //System.out.println(Return.getTotalDoub());
 
             //totalAmountLbl.setText("" + Return.getTotalDoub());

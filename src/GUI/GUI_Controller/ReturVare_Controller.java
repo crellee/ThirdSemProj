@@ -61,7 +61,6 @@ public class ReturVare_Controller implements Initializable
         productNameCol.setCellValueFactory(new PropertyValueFactory<Product, String>("name"));
         priceCol.setCellValueFactory(new PropertyValueFactory<Model.Product, Double>("price"));
 
-
         ResultSet rs = Return.toFillTable();
 
         try

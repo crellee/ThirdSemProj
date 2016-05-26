@@ -31,6 +31,8 @@ public class EnterReceiptId_Controller implements Initializable
     @FXML
     Button okButton;
 
+    @FXML
+    TextField imercoCardField;
 
 
     @Override
@@ -39,11 +41,18 @@ public class EnterReceiptId_Controller implements Initializable
 
     }
 
-    public void getReceiptContent() throws IOException {
-        if(!Return.findReceipt(receiptIdField))
+    public void getReceiptContent() throws IOException
+    {
+        if(receiptIdField.getText().isEmpty())
+        {
+            validLbl.setText("Please insert a receipt");
+        }
+
+        if(!Return.findReceipt(receiptIdField, imercoCardField))
         {
             validLbl.setText("Receipt doesn't exist");
         }
+        //else if(!Return.findReceipt(receiptIdField) )
         else
         {
             Stage actualStage = (Stage) okButton.getScene().getWindow();

@@ -30,7 +30,7 @@
                   <Insets left="10.0" />
                </VBox.margin>
             </Label>
-            <TextField fx:id="receiptIdField1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="27.0" prefWidth="578.0">
+            <TextField fx:id="imercoCardField" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="27.0" prefWidth="578.0">
                <VBox.margin>
                   <Insets left="10.0" />
                </VBox.margin>
