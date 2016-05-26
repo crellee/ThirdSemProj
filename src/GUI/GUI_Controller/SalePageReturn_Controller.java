@@ -103,8 +103,7 @@ public class SalePageReturn_Controller implements Initializable
         stage.show();
     }
 
-    public void endReturn() throws SQLException
-    {
+    public void endReturn() throws SQLException, IOException {
         for (Map.Entry<Integer, ArrayList<Integer>> entry : productGUI_intermediary.getReturnMap().entrySet()) {
             Integer saleIdNum = entry.getKey();
             ArrayList<Integer> numList = entry.getValue();
@@ -115,27 +114,20 @@ public class SalePageReturn_Controller implements Initializable
             int point = PointCounter.countPoints((int) Return.getTotalDoub());
 
             Return.updateImercoPoints(point);
-            //System.out.println(Return.getTotalDoub());
 
-            //totalAmountLbl.setText("" + Return.getTotalDoub());
+            Return.resetStatics();
+
+            Stage stage2 = (Stage) totalAmountLbl.getScene().getWindow();
+            stage2.close();
+
+            Stage stage = new Stage();
+            Parent root = FXMLLoader.load(getClass().getResource("/GUI/FXML_FrontPage.fxml"));
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
 
         }
     }
-        /*
-        //ArrayList<Integer> testlist = productGUI_intermediary.getReturnMap().get(productGUI_intermediary.getCurrentSaleId());
-        Iterator entries = productGUI_intermediary.getReturnMap().entrySet().iterator();
-        while (entries.hasNext())
-        {
-            Integer saleId = (Integer) entries.next();
-            try
-            {
-                Return.updateSalesTable(productGUI_intermediary.getCurrentSaleId(), 1, productId);
-            } catch (SQLException e)
-            {
-                e.printStackTrace();
-            }
-        }
-        */
 
 }
 

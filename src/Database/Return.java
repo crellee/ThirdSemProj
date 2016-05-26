@@ -163,4 +163,11 @@ and s1.productId = p1.productId
         stmt.executeUpdate(sqlString);
 
     }
+    public static void resetStatics()
+    {
+        receiptIdstat = 0;
+        imercoCardIdstat = 0;
+        saleIdstat = 0;
+        totalDoub = 0;
+    }
 }
