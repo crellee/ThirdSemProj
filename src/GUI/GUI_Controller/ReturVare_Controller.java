@@ -30,9 +30,9 @@ import java.util.ResourceBundle;
 public class ReturVare_Controller implements Initializable
 {
 
-    ProductGUI_Intermediary productGUI_intermediary = ProductGUI_Intermediary.getInstance();
+    private ProductGUI_Intermediary productGUI_intermediary = ProductGUI_Intermediary.getInstance();
 
-    ObservableList<Product> allProducts = FXCollections.observableArrayList();
+    private ObservableList<Product> allProducts = FXCollections.observableArrayList();
 
     @FXML
     TableColumn productIdCol;
@@ -46,7 +46,7 @@ public class ReturVare_Controller implements Initializable
     @FXML
     TableView<Product> mainTable;
 
-    ArrayList<Integer> currentProductsToReturn = new ArrayList<>();
+    private ArrayList<Integer> currentProductsToReturn = new ArrayList<>();
 
 
     @Override

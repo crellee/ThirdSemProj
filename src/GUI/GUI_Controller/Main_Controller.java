@@ -8,6 +8,8 @@ import javafx.stage.Stage;
 public class Main_Controller
 {
     private static Main_Controller singleton = new Main_Controller( );
+    Stage thisStage;
+
 
     /* A private Constructor prevents any other
      * class from instantiating.
@@ -19,8 +21,6 @@ public class Main_Controller
     {
         return singleton;
     }
-
-    Stage thisStage;
 
     public void setStage (Stage stage)
     {

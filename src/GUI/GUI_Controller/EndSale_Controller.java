@@ -29,32 +29,17 @@ import java.util.ResourceBundle;
  */
 public class EndSale_Controller implements Initializable
 {
-    Stage endSaleStage = new Stage();
-
-    @FXML
-    private Button cashBtn;
-
-    @FXML
-    private Button cardBtn;
-
-    @FXML
-    private Button fFCardBtn;
-
     @FXML
     private Label totalAmountLbl;
-    private double totalAmountDoub;
 
     @FXML
     private Label paidAmountLbl;
-    private double paidAmountDoub;
 
     @FXML
     private Label toOweLbl;
-    private double toOweDoub;
 
     @FXML
     private Label discountLbl;
-    private int discountInt;
 
     @FXML
     TableView<Product> mainTable;
@@ -72,11 +57,11 @@ public class EndSale_Controller implements Initializable
     @FXML
     TableColumn amount;
 
-    ObservableList<Product> allProducts = FXCollections.observableArrayList();
+    private ObservableList<Product> allProducts = FXCollections.observableArrayList();
 
-    ProductGUI_Intermediary productGUIIntermediary = ProductGUI_Intermediary.getInstance();
+    private ProductGUI_Intermediary productGUIIntermediary = ProductGUI_Intermediary.getInstance();
 
-    Calculator calculator = new Calculator();
+    private Calculator calculator = new Calculator();
 
     @Override
     public void initialize(URL location, ResourceBundle resources)
@@ -102,15 +87,6 @@ public class EndSale_Controller implements Initializable
 
         double paidAmount = calculator.updatePaidAmount();
         paidAmountLbl.setText(Double.toString(paidAmount));
-    }
-
-    public void showEndSale() throws IOException
-    {
-        Stage endSale = new Stage();
-        Parent root = FXMLLoader.load(getClass().getResource("/GUI/FXML_EndSale.fxml"));
-        Scene scene = new Scene(root);
-        endSale.setScene(scene);
-        endSale.show();
     }
 
     public void doneDeal(ActionEvent event) throws IOException {

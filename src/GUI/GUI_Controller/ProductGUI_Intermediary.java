@@ -15,12 +15,12 @@ import java.util.Map;
  */
 public class ProductGUI_Intermediary
 {
-    Product product;
-    ObservableList<Product> allProducts = FXCollections.observableArrayList();
-    ObservableList<Product> productsToReturnList = FXCollections.observableArrayList();
+    private Product product;
+    private ObservableList<Product> allProducts = FXCollections.observableArrayList();
+    private ObservableList<Product> productsToReturnList = FXCollections.observableArrayList();
 
     //Used to update sales when return is made
-    Map<Integer, ArrayList<Integer>> returnMap = new HashMap<>();
+    private Map<Integer, ArrayList<Integer>> returnMap = new HashMap<>();
     private int currentSaleId;
 
     private static ProductGUI_Intermediary singleton = new ProductGUI_Intermediary( );

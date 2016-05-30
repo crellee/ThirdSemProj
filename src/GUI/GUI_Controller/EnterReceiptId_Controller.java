@@ -2,7 +2,6 @@ package GUI.GUI_Controller;
 
 import Database.CreateCustomer;
 import Database.Return;
-import Model.Receipt;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;

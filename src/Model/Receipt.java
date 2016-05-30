@@ -14,9 +14,6 @@ public class Receipt
     private double total;
     private boolean paymentType;
 
-    public static List<Employee> employeeList = new ArrayList<Employee>();
-    public static List<ImercoCard> imercoCardList = new ArrayList<ImercoCard>();
-
     public Receipt()
     {}
 

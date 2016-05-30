@@ -13,8 +13,6 @@ public class Customer
     private int zipCode;
     private String email;
 
-    public static List<Customer> customerList = new ArrayList<Customer>();
-
     public Customer()
     {}
 

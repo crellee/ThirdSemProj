@@ -11,8 +11,6 @@ public class Employee
     private String name;
     private int id;
 
-    public static List<Employee> employeeList = new ArrayList<Employee>();
-
     public Employee()
     {}
 
